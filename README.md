@@ -1,10 +1,10 @@
-# WebDesign_FinalProject
+# Find My Den
 
 ## Contents:
 
-1.Summary
-2.User Stories
-3.Domain Diagram
+1. Summary
+2. User Stories
+3. Domain Diagram
 
 ### 1. Summary
 
@@ -16,18 +16,20 @@ Users will also be able to search for accommodation close to their desired locat
 
 ### 2. User stories
 
-As a user, I want to sign up to use the application
-As a user, I want to login to the application after authenticating my credentials
-As a user, I want to land in the home page which lists the available spot/private room/house postings.
-As a user, I want to be able to create a new shared spot/private room/house availability posting.
-As a user, I want to add details and images of the listing
-As a user, I want to be able to search for a spot/private room/house using filters.
-As a user, I want to be able to view all my current/previous postings.
-As a user, I want to be able hide/unhide my postings.
-As a user, I want to be able to locate the accommodation on a map.
-As a user, I want to be able to bookmark a listing
-As a user, I want to be able to view all the bookmarked listing
+- As a user, I want to sign up to use the application
+- As a user, I want to login to the application after authenticating my credentials
+- As a user, I want to land in the home page which lists the available spot/private room/house postings.
+- As a user, I want to be able to create a new shared spot/private room/house availability posting.
+- As a user, I want to add details and images of the listing
+- As a user, I want to be able to search for a spot/private room/house using filters.
+- As a user, I want to be able to view all my current/previous postings.
+- As a user, I want to be able hide/unhide my postings.
+- As a user, I want to be able to locate the accommodation on a map.
+- As a user, I want to be able to bookmark a listing
+- As a user, I want to be able to view all the bookmarked listing
 
 ### 3. Domain Diagram
+
+![Alt text](DomainDiagram?raw=true "Page view")
 
 WebDesign_FinalProject/DomainDiagram.png
