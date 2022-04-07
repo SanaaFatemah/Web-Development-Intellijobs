@@ -1,4 +1,4 @@
 //Model - represents data in the data base
-import Item from "./item.js";
+import User from "./user.js";
 
-export default { Item };
+export default { User };

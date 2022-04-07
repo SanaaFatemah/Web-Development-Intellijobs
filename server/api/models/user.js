@@ -37,7 +37,7 @@ Schema.virtual("id", () => {
 // Converting the virtual id to JSON
 Schema.set("toJSON", { virtuals: true });
 
-//create a items model to export
-const model = mangoose.model("item", Schema);
+//create a users model to export
+const model = mangoose.model("user", Schema);
 
 export default model;

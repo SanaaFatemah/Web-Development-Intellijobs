@@ -70,7 +70,7 @@ export const remove = async (request, response) => {
     const id = request.params.id;
     const user = await userServices.remove(id);
     setSuccessResponse(
-      { message: `successfully removed task item Number${id}` },
+      { message: `successfully removed the user${id}` },
       response
     );
   } catch (error) {
