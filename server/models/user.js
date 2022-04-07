@@ -3,19 +3,20 @@
 import mangoose from "mongoose";
 
 //define the structure and properties of the JSON object
-const Schema = mangoose.Schema(
+const uSchema = mangoose.Schema(
   {
-    taskNum: {
+    name: {
       type: String,
-      required: "TaskNum is required.",
+      required: true,
     },
-    title: {
+    email: {
       type: String,
-      required: "Title is required.",
+      required: true,
+      unique: true,
     },
-    description: {
+    password: {
       type: String,
-      required: "Description is required.",
+      required: true,
     },
     createdDate: {
       type: Date,
@@ -30,14 +31,14 @@ const Schema = mangoose.Schema(
 );
 
 //A virtual property named id will be copied and converted into hexa-decimal string
-Schema.virtual("id", () => {
+uSchema.virtual("id", () => {
   this._id.toHexString();
 });
 
 // Converting the virtual id to JSON
-Schema.set("toJSON", { virtuals: true });
+uSchema.set("toJSON", { virtuals: true });
 
 //create a users model to export
-const model = mangoose.model("user", Schema);
+const model = mangoose.model("user", uSchema);
 
 export default model;
