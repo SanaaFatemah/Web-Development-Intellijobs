@@ -30,6 +30,6 @@ Users will also be able to search for accommodation close to their desired locat
 
 ### 3. Domain Diagram
 
-![Alt text](DomainDiagram?raw=true "Page view")
+![Alt text](/final-project-webdevs/DomainDiagram.png)
 
-WebDesign_FinalProject/DomainDiagram.png
+final-project-webdevs/DomainDiagram.png
