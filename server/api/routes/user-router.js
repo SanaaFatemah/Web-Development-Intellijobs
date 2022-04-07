@@ -1,12 +1,12 @@
 import express from "express";
-import * as itemsController from "./../controllers/items-controller.js";
+import * as usersController from "./../controllers/users-controller.js";
 const router = express.Router();
 
 /** To route below API endpoint requests :
  * Search all the tasks - GET /items
  * Create task - POST /items
  */
-router.route("/items").post(itemsController.post).get(itemsController.index);
+router.route("/users").post(usersController.post).get(usersController.index);
 
 /**  To route below API endpoint requests :
  * Retrieve task by id - GET /items/${id}
@@ -14,8 +14,8 @@ router.route("/items").post(itemsController.post).get(itemsController.index);
  * Delete task by id - DELETE /items/${id}
  */
 router
-  .route("/items/:id")
-  .get(itemsController.get)
-  .put(itemsController.update)
-  .delete(itemsController.remove);
+  .route("/users/:id")
+  .get(usersController.get)
+  .put(usersController.update)
+  .delete(usersController.remove);
 export default router;

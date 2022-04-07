@@ -9,7 +9,7 @@ import model from "./models/index.js";
 const app = express();
 
 //to connect to mongodb
-mongoose.connect("mongodb://localhost:27017/toDoitemsdb");
+mongoose.connect("mongodb://localhost:27017/usersdb");
 
 //to parse request body and convert that into a json object
 app.use(express.json());
