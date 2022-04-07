@@ -3,15 +3,15 @@ import * as usersController from "./../controllers/users-controller.js";
 const router = express.Router();
 
 /** To route below API endpoint requests :
- * Search all the tasks - GET /items
- * Create task - POST /items
+ * Search all the users - GET /users
+ * Create users - POST /users
  */
 router.route("/users").post(usersController.post).get(usersController.index);
 
 /**  To route below API endpoint requests :
- * Retrieve task by id - GET /items/${id}
- * Update task by id - PUT /items/${id}
- * Delete task by id - DELETE /items/${id}
+ * Retrieve user by id - GET /users/${id}
+ * Update user by id - PUT /users/${id}
+ * Delete user by id - DELETE /users/${id}
  */
 router
   .route("/users/:id")
