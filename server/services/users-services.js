@@ -3,8 +3,8 @@ import User from "./../models/user.js";
 
 //create new todo item.
 export const save = (newUser) => {
-  const user = new Item(newUser);
-  return User.save();
+  const user = new User(newUser);
+  return user.save();
 };
 
 //returns all the todo items
