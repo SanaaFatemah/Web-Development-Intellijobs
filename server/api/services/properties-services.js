@@ -3,7 +3,7 @@ import Property from "../models/property.js";
 
 //create new property
 export const save = (newProperty) => {
-  const property = new User(newProperty);
+  const property = new Property(newProperty);
   return property.save();
 };
 

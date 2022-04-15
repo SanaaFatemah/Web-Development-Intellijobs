@@ -30,9 +30,9 @@ const uSchema = mangoose.Schema(
     owner: {
       type: Object,
     },
-    propertyPhoto: {
-      type: Array,
-    },
+    // propertyPhoto: {
+    //   type: Array,
+    // },
     bedrooms: {
       type: Number,
     },
@@ -75,6 +75,6 @@ uSchema.virtual("id", () => {
 uSchema.set("toJSON", { virtuals: true });
 
 //create a users model to export
-const model = mangoose.model("user", uSchema);
+const model = mangoose.model("property", uSchema);
 
 export default model;
