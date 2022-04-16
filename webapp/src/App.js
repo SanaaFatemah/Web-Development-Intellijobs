@@ -1,17 +1,20 @@
-import React from "react";
-import "./App.scss";
-import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home/Home";
-
+import FrontPage from "./pages/FrontPage";
+import { BrowserRouter, Routes, Route, link, Link } from "react-router-dom";
 function App() {
   return (
-    <Router>
-      <Home />
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Dashboard</Link>
+        <Link to="/RegisterUser">RegisterUser</Link>
+        <Link to="/FrontPage">FrontPage</Link>
+      </nav>
       <Routes>
-        <Route path="/" exact component={Home} />
+        <Route path="/" element={<div>Dashboard</div>} />
+        <Route path="/RegisterUser" element={<div>RegisterUser</div>} />
+        <Route path="/FrontPage" element={<FrontPage></FrontPage>} />
+        <Route path="*" element={<h1>Error Page</h1>} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
