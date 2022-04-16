@@ -1,18 +1,14 @@
-import FrontPage from "./pages/FrontPage";
-import { BrowserRouter, Routes, Route, link, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Dashboard, RegisterUser, FrontPage, ErrorPage } from "./pages";
+
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Dashboard</Link>
-        <Link to="/RegisterUser">RegisterUser</Link>
-        <Link to="/FrontPage">FrontPage</Link>
-      </nav>
       <Routes>
-        <Route path="/" element={<div>Dashboard</div>} />
-        <Route path="/RegisterUser" element={<div>RegisterUser</div>} />
+        <Route path="/" element={<Dashboard></Dashboard>} />
+        <Route path="/RegisterUser" element={<RegisterUser></RegisterUser>} />
         <Route path="/FrontPage" element={<FrontPage></FrontPage>} />
-        <Route path="*" element={<h1>Error Page</h1>} />
+        <Route path="*" element={<ErrorPage></ErrorPage>} />
       </Routes>
     </BrowserRouter>
   );
