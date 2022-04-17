@@ -4,17 +4,16 @@ import { AlertMessage, FormInput } from "../components";
 import { useContextApp } from "../context/contextApp";
 
 const State = {
-  userName: "",
-  userEmail: "",
-  userPassword: "",
+  name: "",
+  email: "",
+  password: "",
   isaMember: true,
   //displayAlertMsg: false,
 };
 
 const RegisterUser = () => {
   const [values, setValues] = useState(State);
-
-  const { isLoading, displayAlertMsg } = useContextApp();
+  const { isLoading, displayAlertMsg, showAlert } = useContextApp();
   //console.log(state);
 
   const toggleRegister = () => {
@@ -23,13 +22,24 @@ const RegisterUser = () => {
 
   //Function to change after user changes his input
   const handleChange = (e) => {
-    console.log(e.target);
+    //console.log(e.target);
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   //Function to perform action after user clicks on submit button
   const fnSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    // console.log(e.target);
+    //adding validation check for the input fields before submit
+    if (
+      !values.email ||
+      !values.password ||
+      (!values.isaMember && !values.name)
+    ) {
+      showAlert();
+      return;
+    }
+    //console.log(values);
   };
   return (
     <div>
@@ -41,8 +51,8 @@ const RegisterUser = () => {
         {!values.isaMember && (
           <FormInput
             type="text"
-            name="Username"
-            value={values.userName}
+            name="name"
+            value={values.name}
             handleChange={handleChange}
           />
         )}
@@ -50,15 +60,15 @@ const RegisterUser = () => {
         {/* Form Email input field HTML elements */}
         <FormInput
           type="email"
-          name="Registered email"
-          value={values.userEmail}
+          name="email"
+          value={values.email}
           handleChange={handleChange}
         />
         {/* Form Password input field HTML elements */}
         <FormInput
           type="password"
           name="password"
-          value={values.userPassword}
+          value={values.password}
           handleChange={handleChange}
         />
         <button type="submit" className="btn btn-block">

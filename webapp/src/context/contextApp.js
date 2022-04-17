@@ -1,6 +1,6 @@
-import React, { useState, useReducer, useContext } from "react";
+import React, { useReducer, useContext } from "react";
 import reducer from "./reducer";
-import { SHOW_ALERT } from "./action";
+import { SHOW_ALERT, HIDE_ALERT } from "./actions";
 const State = {
   isLoading: false,
   displayAlertMsg: false,
@@ -16,6 +16,13 @@ const ProviderApp = ({ children }) => {
 
   const showAlert = () => {
     dispatch({ type: SHOW_ALERT });
+    hideAlert();
+  };
+
+  const hideAlert = () => {
+    setTimeout(() => {
+      dispatch({ type: HIDE_ALERT });
+    }, 3000);
   };
 
   return (
