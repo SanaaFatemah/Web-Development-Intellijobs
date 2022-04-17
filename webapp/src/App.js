@@ -1,17 +1,16 @@
-import React from "react";
-import "./App.scss";
-import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Dashboard, RegisterUser, FrontPage, ErrorPage } from "./pages";
 
 function App() {
   return (
-    <Router>
-      <Home />
+    <BrowserRouter>
       <Routes>
-        <Route path="/" exact component={Home} />
+        <Route path="/" element={<Dashboard></Dashboard>} />
+        <Route path="/RegisterUser" element={<RegisterUser></RegisterUser>} />
+        <Route path="/FrontPage" element={<FrontPage></FrontPage>} />
+        <Route path="*" element={<ErrorPage></ErrorPage>} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
