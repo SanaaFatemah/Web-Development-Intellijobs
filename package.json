@@ -1,0 +1,28 @@
+{
+  "name": "final-project-webdevs",
+  "version": "1.0.0",
+  "description": "1. Summary\r 2. User Stories\r 3. Domain Diagram",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neu-mis-info6150-spring-2022/final-project-webdevs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neu-mis-info6150-spring-2022/final-project-webdevs/issues"
+  },
+  "homepage": "https://github.com/neu-mis-info6150-spring-2022/final-project-webdevs#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  }
+}
