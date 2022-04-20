@@ -1,3 +1,4 @@
+//import cors from "cors";
 import express from "express";
 const app = express();
 import env from "dotenv";
@@ -16,11 +17,17 @@ doesNotExistMiddleware;
 import doesNotExistMiddleware from "./middleware/doesNotExist.js";
 import handleErrorMiddleware from "./middleware/handleError.js";
 
+//app.use(cors());
 app.use(express.json());
+
+app.get("/api/v1", (req, res) => {
+  // throw new Error('error')
+  res.json({ msg: "API" });
+});
 
 app.get("/", (req, res) => {
   // throw new Error('error')
-  res.send("Welcome!");
+  res.json({ msg: "Welcome!" });
 });
 
 app.use("/api/v1/auth", authRouter);
@@ -29,7 +36,7 @@ app.use("/api/v1/jobs", jobsRouter);
 app.use(doesNotExistMiddleware);
 app.use(handleErrorMiddleware);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 const start = async () => {
   try {
