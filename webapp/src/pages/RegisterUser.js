@@ -13,7 +13,8 @@ const State = {
 
 const RegisterUser = () => {
   const [values, setValues] = useState(State);
-  const { isLoading, displayAlertMsg, showAlert } = useContextApp();
+  const { isLoading, displayAlertMsg, showAlert, userRegistration } =
+    useContextApp();
   //console.log(state);
 
   const toggleRegister = () => {
@@ -29,6 +30,7 @@ const RegisterUser = () => {
   //Function to perform action after user clicks on submit button
   const fnSubmit = (e) => {
     e.preventDefault();
+    const { name, email, password, isaMember } = values;
     // console.log(e.target);
     //adding validation check for the input fields before submit
     if (
@@ -38,6 +40,13 @@ const RegisterUser = () => {
     ) {
       showAlert();
       return;
+    }
+
+    const currentUser = { email, password, name };
+    if (isaMember) {
+      console.log("already a member");
+    } else {
+      userRegistration(currentUser);
     }
     //console.log(values);
   };
@@ -71,7 +80,7 @@ const RegisterUser = () => {
           value={values.password}
           handleChange={handleChange}
         />
-        <button type="submit" className="btn btn-block">
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
           Login
         </button>
         {/* Adding a register button and calling the toggle function between registered user login and new user login*/}
