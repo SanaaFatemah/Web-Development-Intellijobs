@@ -159,7 +159,7 @@ ul {
   display: inline-block;
 }
 .btn:hover {
-  background: var(--primary-700);
+  background-color: darken(beige,10%);
   box-shadow: var(--shadow-3);
 }
 .btn-hipster {
@@ -290,7 +290,7 @@ ul {
 
 .container {
   width: var(--fluid-width);
-  max-width: var(--max-width);
+  /* max-width: var(--max-width); */
   margin: 0 auto;
 }
 .full-page {

@@ -1,4 +1,4 @@
-# Find My Den
+# Job Tracker
 
 ## Contents:
 
@@ -8,25 +8,20 @@
 
 ### 1. Summary
 
-# Find my Den!
+# Job Tracker
 
-To create an application that aids people in finding and posting available accommodations. It will provide the users an opportunity to create and peruse house listings. We will be adding a map feature which would help the users locate the accommodation. This application is for both people who are looking for an accommodation as well as those who want to list their accommodation. While creating a new listing, the user will be able to add information such as location, lease period, rent, deposit, preferred gender, landmarks etc. Also, users will have the feature to upload pictures of the accommodation.
-
-Users will also be able to search for accommodation close to their desired locations. Social media information of the owner of the job postings The main aim of building this application is to make it a one stop destination for finding rentals especially for students.
+To create an application that provides job applicants a canvas where they can track the statuses of all their job applications. it will give the user an analytical view of the status of their job applications by displaying the statistics. the applicant will have a search page where he can view all his applications regardless fo the status. the applicant can add a new job that he has applied to by filling out details such as Job position, Company name, Job location etc.
+The main aim of building this application is to give them a platform where they can easily update and track their job applications.
 
 ### 2. User stories
 
-- As a user, I want to sign up to use the application
-- As a user, I want to login to the application after authenticating my credentials
-- As a user, I want to land in the home page which lists the available spot/private room/house postings.
-- As a user, I want to be able to create a new shared spot/private room/house availability posting.
-- As a user, I want to add details and images of the listing
-- As a user, I want to be able to search for a spot/private room/house using filters.
-- As a user, I want to be able to view all my current/previous postings.
-- As a user, I want to be able hide/unhide my postings.
-- As a user, I want to be able to locate the accommodation on a map.
-- As a user, I want to be able to bookmark a listing
-- As a user, I want to be able to view all the bookmarked listing
+- As a user, I want to register for the application.
+- As a user, I want to login to the application after authenticating my credentials.
+- As a user, I want to land in my dashboard where i can see the stats of all my applications.
+- As a user, I want to view all the jobs i have applied to.
+- As a user, I want to filter the search screen based on the status, type etc.
+- As a user, I want to add a new job application by filling out the required details.
+- As a user, I want to view/update my profile.
 
 ### 3. Domain Diagram
 

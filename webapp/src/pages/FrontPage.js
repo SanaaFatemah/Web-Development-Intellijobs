@@ -1,14 +1,14 @@
 import React from "react";
+import './sass/FrontPage.scss';
 import { Link } from "react-router-dom";
 
 function FrontPage() {
   return (
     <div className="container page">
-      <h4>Job Application Tracker</h4>
+      <video src="/videos/home.mp4" autoPlay loop muted/>
+      <h1>Job Search Tracker</h1>
       <p>
-        Turn your process expertise into apps that streamline your most critical
-        work. Streamline processes, eliminate errors & run real-time reports.
-        Request a Demo. Automations.
+          Track all the jobs you apply for at one place!
       </p>
       <Link to="/RegisterUser" className="btn btn-hero">
         Login/Register
