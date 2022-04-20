@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
+import jwtToken from "jsonwebtoken";
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -24,6 +25,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide password"],
     minlength: 6,
+    select: false, //to hide password
   },
   lastName: {
     type: String,
@@ -44,5 +46,13 @@ UserSchema.pre("save", async function () {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
+
+//adding JWT token using create JWT method - to restrict others views job created by a particular user
+UserSchema.methods.newJWT = function () {
+  // console.log(this);
+  return jwtToken.sign({ userUniqId: this._id }, process.env.JWT_ENCKEY, {
+    expiresIn: process.env.JWT_EXPIRY,
+  });
+};
 
 export default mongoose.model("User", UserSchema);

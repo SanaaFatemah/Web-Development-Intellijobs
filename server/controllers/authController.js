@@ -13,7 +13,18 @@ const registerUser = async (req, res) => {
     throw new BadRequestError("Email already in use");
   }
   const user = await User.create({ name, email, password });
-  res.status(StatusCodes.CREATED).json({ user });
+  const jToken = user.newJWT();
+  res
+    .status(StatusCodes.CREATED) //hiding the user password in the response
+    .json({
+      user: {
+        name: user.name,
+        lastName: user.lastName,
+        email: user.email,
+        location: user.location,
+      },
+      jToken,
+    });
 };
 const loginUser = async (req, res) => {
   res.send("User logged in");
