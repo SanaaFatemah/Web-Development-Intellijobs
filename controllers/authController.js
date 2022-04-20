@@ -22,7 +22,9 @@ const login = async (req,res) => {
     res.send('login user')
 }
 const updateUser = async (req,res) => {
+
     res.send('update user')
+    User.findOneAndUpdate
 }
 
 export { register, login, updateUser }
