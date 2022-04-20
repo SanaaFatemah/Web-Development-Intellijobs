@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { AlertMessage, FormInput } from "../components";
 import { useContextApp } from "../context/contextApp";
+import { useNavigate } from "react-router-dom";
 
 const State = {
   name: "",
@@ -12,8 +13,9 @@ const State = {
 };
 
 const RegisterUser = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState(State);
-  const { isLoading, displayAlertMsg, showAlert, userRegistration } =
+  const { user, isLoading, displayAlertMsg, showAlert, userRegistration } =
     useContextApp();
   //console.log(state);
 
@@ -42,7 +44,7 @@ const RegisterUser = () => {
       return;
     }
 
-    const currentUser = { email, password, name };
+    const currentUser = { name, password, email };
     if (isaMember) {
       console.log("already a member");
     } else {
@@ -50,6 +52,14 @@ const RegisterUser = () => {
     }
     //console.log(values);
   };
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [user, navigate]);
+
   return (
     <div>
       {/*Form HTML element for user Login or Registration */}
