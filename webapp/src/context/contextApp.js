@@ -150,12 +150,17 @@ const ProviderApp = ({ children }) => {
     removeUserFromLocalStorage()
   }
 
+  const updateUser = async (currentUser) => {
+    console.log(currentUser);
+  }
+
   return (
     <ContextApp.Provider
       value={{
         ...state,
         showAlert,
-        userRegistration, loginUser, setupUser, toggleSidebar, logoutUser
+        userRegistration, loginUser, setupUser, toggleSidebar, logoutUser, 
+        updateUser
       }}
     >
       {children}
