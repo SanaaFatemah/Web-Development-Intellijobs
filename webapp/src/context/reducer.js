@@ -10,9 +10,11 @@ import {
   SETUP_USER_START,
   SETUP_USER_ERROR,
   SETUP_USER_SUCCESSFUL,
-  TOGGLE_SIDEBAR
+  TOGGLE_SIDEBAR,
+  LOGOUT_USER
 } from "./actions";
 
+import {State} from './contextApp'
 //to handle the action type Sent from dispatch
 const reducer = (state, action) => {
   //if action type is equal to showalert then the alert mesage flat is set to true
@@ -110,7 +112,7 @@ const reducer = (state, action) => {
 
   if (action.type === SETUP_USER_ERROR) {
     return {
-      ...state,
+      ...State,
       isLoading: false,
       displayAlertMsg: true,
       alertType: "danger",
@@ -124,7 +126,9 @@ const reducer = (state, action) => {
       
     };
   }
-
+  if(action.type === LOGOUT_USER){
+    return {...state, user:null, token:null, jobLocation:'', userLocation:''}
+  }
 
   throw new Error(`not a valid action :${action.type}`);
 };

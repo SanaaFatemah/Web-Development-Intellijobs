@@ -5,7 +5,7 @@ import {useContextApp} from "../context/contextApp"
 import { useState } from "react"
 const Navbar = () => {
     const [showLogout , setShowLogout] = useState(false)
-    const {toggleSidebar} = useContextApp()
+    const {toggleSidebar, logoutUser, user} = useContextApp()
     return (
         <Wrapper>
            <div className="nav-center">
@@ -24,12 +24,12 @@ const Navbar = () => {
                     <button type = "button" className="btn"
                     onClick={() => setShowLogout(!showLogout)}>
                     <FaUserCircle></FaUserCircle> 
-                    sanaa   
+                    {user?.name}   
                     <FaCaretDown></FaCaretDown>
                     </button>
                     <div className={showLogout?"dropdown show-dropdown":"dropdown"}>
                         <button type = "button" className="dropdown-btn"
-                        onClick={() => console.log("logout user")}>
+                        onClick={logoutUser}>
                             logout
                         </button>
                     </div>
