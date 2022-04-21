@@ -16,6 +16,7 @@ import jobsRouter from "./routes/jobsRoutes.js";
 doesNotExistMiddleware;
 import doesNotExistMiddleware from "./middleware/doesNotExist.js";
 import handleErrorMiddleware from "./middleware/handleError.js";
+import authenticateUser from './middleware/auth.js'
 
 //app.use(cors());
 if (process.env.NODE_ENV !== "production") {
@@ -34,7 +35,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/jobs", jobsRouter);
+app.use("/api/v1/jobs",authenticateUser, jobsRouter);
 
 app.use(doesNotExistMiddleware);
 app.use(handleErrorMiddleware);
