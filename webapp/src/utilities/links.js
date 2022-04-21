@@ -10,4 +10,4 @@ const links = [
     {id:4, text:'Profile',path:'profile', icon:<ImProfile/>}
 ]
 
-export default links;
+export default links
