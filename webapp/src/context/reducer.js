@@ -9,7 +9,8 @@ import {
   LOGIN_USER_SUCCESSFUL,
   SETUP_USER_START,
   SETUP_USER_ERROR,
-  SETUP_USER_SUCCESSFUL
+  SETUP_USER_SUCCESSFUL,
+  TOGGLE_SIDEBAR
 } from "./actions";
 
 //to handle the action type Sent from dispatch
@@ -114,6 +115,13 @@ const reducer = (state, action) => {
       displayAlertMsg: true,
       alertType: "danger",
       alertMsg: action.payload.msg,
+    };
+  }
+  if (action.type === TOGGLE_SIDEBAR) {
+    return {
+      ...state,
+      showSidebar: !state.showSidebar,
+      
     };
   }
 

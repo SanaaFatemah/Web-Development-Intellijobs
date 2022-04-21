@@ -12,7 +12,8 @@ import {
   LOGIN_USER_SUCCESSFUL,
   SETUP_USER_START,
   SETUP_USER_ERROR,
-  SETUP_USER_SUCCESSFUL
+  SETUP_USER_SUCCESSFUL,
+  TOGGLE_SIDEBAR
 } from "./actions";
 
 // set as default
@@ -29,6 +30,8 @@ const State = {
   token: token,
   userLocation: userLocation || " ",
   jobLocation: userLocation || " ",
+  showSidebar: false,
+
 };
 
 const ContextApp = React.createContext();
@@ -136,12 +139,15 @@ const ProviderApp = ({ children }) => {
     }
     hideAlert();
   }
+  const toggleSidebar = () =>{
+    dispatch ({type : TOGGLE_SIDEBAR})
+  }
   return (
     <ContextApp.Provider
       value={{
         ...state,
         showAlert,
-        userRegistration, loginUser, setupUser
+        userRegistration, loginUser, setupUser, toggleSidebar
       }}
     >
       {children}
