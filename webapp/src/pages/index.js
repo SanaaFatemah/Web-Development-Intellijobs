@@ -1,6 +1,7 @@
-import Dashboard from "./DashBoard";
+
 import RegisterUser from "./RegisterUser";
 import ErrorPage from "./ErrorPage";
 import FrontPage from "./FrontPage";
+import ProtectedRoute from "./ProtectedRoute";
 
-export { Dashboard, FrontPage, ErrorPage, RegisterUser };
+export { FrontPage, ErrorPage, RegisterUser, ProtectedRoute };
