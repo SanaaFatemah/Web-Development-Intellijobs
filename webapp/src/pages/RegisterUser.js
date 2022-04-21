@@ -15,7 +15,7 @@ const State = {
 const RegisterUser = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState(State);
-  const { user, isLoading, displayAlertMsg, showAlert, userRegistration } =
+  const { user, isLoading, displayAlertMsg, showAlert, userRegistration, loginUser , setupUser} =
     useContextApp();
   //console.log(state);
 
@@ -46,9 +46,9 @@ const RegisterUser = () => {
 
     const currentUser = { name, password, email };
     if (isaMember) {
-      console.log("already a member");
+      setupUser({currentUser, endPoint:'login', alertMsg:'Login successful! Redirecting...'})
     } else {
-      userRegistration(currentUser);
+      setupUser({currentUser, endPoint:'register', alertMsg:'User Created! Redirecting...'})
     }
     //console.log(values);
   };
@@ -91,7 +91,7 @@ const RegisterUser = () => {
           handleChange={handleChange}
         />
         <button type="submit" className="btn btn-block" disabled={isLoading}>
-          Login
+          Submit
         </button>
         {/* Adding a register button and calling the toggle function between registered user login and new user login*/}
         <p>

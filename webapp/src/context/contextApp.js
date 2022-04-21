@@ -7,6 +7,12 @@ import {
   REGISTER_USER_START,
   REGISTER_USER_SUCCESSFUL,
   REGISTER_USER_ERROR,
+  LOGIN_USER_ERROR,
+  LOGIN_USER_START,
+  LOGIN_USER_SUCCESSFUL,
+  SETUP_USER_START,
+  SETUP_USER_ERROR,
+  SETUP_USER_SUCCESSFUL
 } from "./actions";
 
 // set as default
@@ -79,12 +85,63 @@ const ProviderApp = ({ children }) => {
     }
     hideAlert();
   };
+
+  const loginUser = async (currentUser) => {
+    dispatch({ type: LOGIN_USER_START });
+    try {
+      const {data} = await axios.post("/api/v1/auth/login", currentUser);
+      
+      const { user, token, location } = data;
+      dispatch({
+        type: LOGIN_USER_SUCCESSFUL,
+        payload: {
+          user,
+          token,
+          location
+        },
+      });
+      addUserToLocalStorage({ user, token, location });
+    } catch (error) {
+      //console.log(error.response);
+      dispatch({
+        type: LOGIN_USER_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    hideAlert();
+  }
+
+  const setupUser = async ({currentUser, endPoint, alertMsg}) => {
+    dispatch({ type: SETUP_USER_START });
+    try {
+      const {data} = await axios.post(`/api/v1/auth/${endPoint}`, currentUser);
+      
+      const { user, token, location } = data;
+      dispatch({
+        type: SETUP_USER_SUCCESSFUL,
+        payload: {
+          user,
+          token,
+          location,
+          alertMsg
+        },
+      });
+      addUserToLocalStorage({ user, token, location });
+    } catch (error) {
+      //console.log(error.response);
+      dispatch({
+        type: SETUP_USER_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    hideAlert();
+  }
   return (
     <ContextApp.Provider
       value={{
         ...state,
         showAlert,
-        userRegistration,
+        userRegistration, loginUser, setupUser
       }}
     >
       {children}
