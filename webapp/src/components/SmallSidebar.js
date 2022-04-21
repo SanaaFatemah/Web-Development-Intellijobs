@@ -6,12 +6,13 @@ import {useContextApp} from '../context/contextApp'
 import {NavLink} from 'react-router-dom'
 
 const SmallSidebar = () => {
+    const {showSidebar, toggleSidebar} = useContextApp();
     return (
         <Wrapper>
             <h4>
-                <div className="sidebar-container show-sidebar">
+                <div className={showSidebar?'sidebar-container show-sidebar' : 'sidebar-container'}>
                     <div className="content">
-                        <button type="button" className="close-btn" onClick={()=>{console.log('toggle sidebar')}}>
+                        <button type="button" className="close-btn" onClick={toggleSidebar}>
                             <FaTimes />
                         </button>
                         <header>
