@@ -5,7 +5,7 @@ import { ImProfile } from "react-icons/im";
 
 const links = [
   { id: 1, text: "Profile", path: "profile", icon: <ImProfile /> },
-  { id: 2, text: "Add New Job", path: "add-job", icon: <FaWpforms /> },
+  { id: 2, text: "Manage Jobs", path: "add-job", icon: <FaWpforms /> },
   { id: 3, text: "View All Jobs", path: "all-jobs", icon: <MdQueryStats /> },
   { id: 4, text: "Job Analysis", path: "/", icon: <IoBarChartSharp /> },
 ];
