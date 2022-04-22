@@ -6,10 +6,10 @@ import {
   registerUser,
   loginUser,
 } from "../controllers/authController.js";
-import authenticateUser from '../middleware/auth.js'
+import authenticateUser from "../middleware/auth.js";
 
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
-router.route("/updateUser").patch(authenticateUser, updateUser);
+router.route("/updateUser").put(authenticateUser, updateUser);
 
 export default router;

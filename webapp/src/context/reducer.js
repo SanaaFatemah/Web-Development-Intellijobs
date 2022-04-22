@@ -11,10 +11,13 @@ import {
   SETUP_USER_ERROR,
   SETUP_USER_SUCCESSFUL,
   TOGGLE_SIDEBAR,
-  LOGOUT_USER
+  LOGOUT_USER,
+  UPDATE_USER_START,
+  UPDATE_USER_SUCCESSFULL,
+  UPDATE_USER_ERROR,
 } from "./actions";
 
-import {State} from './contextApp'
+import { State } from "./contextApp";
 //to handle the action type Sent from dispatch
 const reducer = (state, action) => {
   //if action type is equal to showalert then the alert mesage flat is set to true
@@ -64,7 +67,7 @@ const reducer = (state, action) => {
     };
   }
 
-   if (action.type === LOGIN_USER_START) {
+  if (action.type === LOGIN_USER_START) {
     return { ...state, isLoading: true };
   }
 
@@ -105,7 +108,7 @@ const reducer = (state, action) => {
       userLocation: action.payload.location,
       jobLocation: action.payload.location,
       displayAlertMsg: true,
-      alertType: 'success',
+      alertType: "success",
       alertMsg: action.payload.alertMsg,
     };
   }
@@ -123,11 +126,43 @@ const reducer = (state, action) => {
     return {
       ...state,
       showSidebar: !state.showSidebar,
-      
     };
   }
-  if(action.type === LOGOUT_USER){
-    return {...state, user:null, token:null, jobLocation:'', userLocation:''}
+  if (action.type === LOGOUT_USER) {
+    return {
+      ...state,
+      user: null,
+      token: null,
+      jobLocation: "",
+      userLocation: "",
+    };
+  }
+
+  if (action.type === UPDATE_USER_START) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === UPDATE_USER_SUCCESSFULL) {
+    return {
+      ...state,
+      isLoading: false,
+      token: action.payload.token,
+      user: action.payload.user,
+      userLocation: action.payload.location,
+      jobLocation: action.payload.location,
+      displayAlertMsg: true,
+      alertType: "success",
+      alertMsg: "User Profile Updated!",
+    };
+  }
+  if (action.type === UPDATE_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      displayAlertMsg: true,
+      alertType: "danger",
+      alertMsg: action.payload.msg,
+    };
   }
 
   throw new Error(`not a valid action :${action.type}`);

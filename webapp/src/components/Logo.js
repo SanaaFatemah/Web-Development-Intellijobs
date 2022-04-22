@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Logo() {
   return (
-    <div>Logo</div>
-  )
+    <h3>
+      Intelli<b>Jobs</b>
+    </h3>
+  );
 }
 
-export default Logo
+export default Logo;
