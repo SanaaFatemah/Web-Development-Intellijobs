@@ -54,7 +54,7 @@ const ProviderApp = ({ children }) => {
   //setup axios request interceptor
   authFetch.interceptors.request.use(
     (config) => {
-      // config.headers.common["Authorization"] = `Bearer ${state.token}`;
+      config.headers.common["Authorization"] = `Bearer ${state.token}`;
       return config;
     },
     (error) => {
@@ -68,7 +68,7 @@ const ProviderApp = ({ children }) => {
       return response;
     },
     (error) => {
-      console.log(error.response);
+      //console.log(error.response);
       if (error.response.status === 401) {
         //console.log("AUTHENTICATION ERROR");
         logoutUser();

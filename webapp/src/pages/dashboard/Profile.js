@@ -11,10 +11,11 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if(!name || !email || !lastName || !location){
-    //     showAlert()
-    //     return
-    // }
+    //checking for empty values in the profile page
+    if (!name || !email || !lastName || !location) {
+      showAlert();
+      return;
+    }
     updateUser({ name, email, lastName, location });
   };
 
