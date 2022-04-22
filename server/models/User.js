@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
-import jwtToken from "jsonwebtoken";
+import token from "jsonwebtoken";
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -43,6 +43,8 @@ const UserSchema = new mongoose.Schema({
 
 //method to hash user password using bcrypt package
 UserSchema.pre("save", async function () {
+  // console.log(this.modifiedPaths())
+  if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
@@ -50,9 +52,14 @@ UserSchema.pre("save", async function () {
 //adding JWT token using create JWT method - to restrict others views job created by a particular user
 UserSchema.methods.newJWT = function () {
   // console.log(this);
-  return jwtToken.sign({ userUniqId: this._id }, process.env.JWT_ENCKEY, {
+  return token.sign({ userUniqId: this._id }, process.env.JWT_ENCKEY, {
     expiresIn: process.env.JWT_EXPIRY,
   });
+};
+
+UserSchema.methods.comparePassword = async function (candidatePassword) {
+  const isMatch = await bcrypt.compare(candidatePassword, this.password);
+  return isMatch;
 };
 
 export default mongoose.model("User", UserSchema);

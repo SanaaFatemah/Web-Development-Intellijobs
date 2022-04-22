@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { AlertMessage, FormInput } from "../components";
 import { useContextApp } from "../context/contextApp";
+import { useNavigate } from "react-router-dom";
 
 const State = {
   name: "",
@@ -12,8 +13,10 @@ const State = {
 };
 
 const RegisterUser = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState(State);
-  const { isLoading, displayAlertMsg, showAlert } = useContextApp();
+  const { user, isLoading, displayAlertMsg, showAlert, userRegistration, loginUser , setupUser} =
+    useContextApp();
   //console.log(state);
 
   const toggleRegister = () => {
@@ -29,6 +32,7 @@ const RegisterUser = () => {
   //Function to perform action after user clicks on submit button
   const fnSubmit = (e) => {
     e.preventDefault();
+    const { name, email, password, isaMember } = values;
     // console.log(e.target);
     //adding validation check for the input fields before submit
     if (
@@ -39,8 +43,23 @@ const RegisterUser = () => {
       showAlert();
       return;
     }
+
+    const currentUser = { name, password, email };
+    if (isaMember) {
+      setupUser({currentUser, endPoint:'login', alertMsg:'Login successful! Redirecting...'})
+    } else {
+      setupUser({currentUser, endPoint:'register', alertMsg:'User Created! Redirecting...'})
+    }
     //console.log(values);
   };
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [user, navigate]);
+
   return (
     <div>
       {/*Form HTML element for user Login or Registration */}
@@ -71,8 +90,8 @@ const RegisterUser = () => {
           value={values.password}
           handleChange={handleChange}
         />
-        <button type="submit" className="btn btn-block">
-          Login
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
+          Submit
         </button>
         {/* Adding a register button and calling the toggle function between registered user login and new user login*/}
         <p>

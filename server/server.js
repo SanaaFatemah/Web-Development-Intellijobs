@@ -4,7 +4,7 @@ const app = express();
 import env from "dotenv";
 env.config();
 import "express-async-errors";
-
+import morgan from "morgan";
 // Database and authentication of user
 import connectDB from "./db/connect.js";
 
@@ -16,8 +16,12 @@ import jobsRouter from "./routes/jobsRoutes.js";
 doesNotExistMiddleware;
 import doesNotExistMiddleware from "./middleware/doesNotExist.js";
 import handleErrorMiddleware from "./middleware/handleError.js";
+import authenticateUser from './middleware/auth.js'
 
 //app.use(cors());
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
 app.use(express.json());
 
 app.get("/api/v1", (req, res) => {
@@ -31,7 +35,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/jobs", jobsRouter);
+app.use("/api/v1/jobs",authenticateUser, jobsRouter);
 
 app.use(doesNotExistMiddleware);
 app.use(handleErrorMiddleware);
