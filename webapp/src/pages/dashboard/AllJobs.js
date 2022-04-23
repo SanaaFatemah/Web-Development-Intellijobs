@@ -1,9 +1,11 @@
-const AllJob = () => {
-    return (
-        <h1>
-            All Job Page
-        </h1>
-    )
+import {JobsContainer, SearchContainer} from '../../components'
+
+const AllJobs = () => {
+    return <>
+    <SearchContainer/>
+    <JobsContainer/>
+    </>
+
 }
 
-export default AllJob
+export default AllJobs
