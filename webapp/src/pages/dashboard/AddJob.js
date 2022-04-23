@@ -1,9 +1,10 @@
-import { FormInput, AlertMessage } from "../../components";
+import { FormInput, AlertMessage, FormRowSelect } from "../../components";
 import { useContextApp } from "../../context/contextApp";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 
 const AddJob = () => {
   const {
+    isLoading,
     isEditing,
     showAlert,
     displayAlert,
@@ -14,22 +15,29 @@ const AddJob = () => {
     jobTypeOptions,
     status,
     statusOptions,
+    handleChange,
+    clearValues,
+    createJob,
   } = useContextApp();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!position || !company || !jobLocation) {
-      displayAlert();
-      return;
+    // if (!position || !company || !jobLocation) {
+    //   displayAlert();
+    //   return;
+    // }
+    if(isEditing){
+      //eventually editJob()
+      return
     }
-    console.log("create job");
+    createJob()
   };
 
   const handleJobInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(`${name}:${value}`);
+    handleChange({name, value})
   };
 
   return (
@@ -62,18 +70,35 @@ const AddJob = () => {
             value={jobLocation}
             handleChange={handleJobInput}
           />
-          {/* job type */}
-
           {/* job status */}
-
+          <FormRowSelect 
+            name="status" 
+            value={status} 
+            handleChange={handleJobInput}
+            list={statusOptions} />
+          {/* job type */}
+          <FormRowSelect 
+            name="jobType" 
+            labelText='Job type'
+            value={jobType} 
+            handleChange={handleJobInput}
+            list={jobTypeOptions} 
+          />
+          {/* btn container */}
           <div className="btn-container">
             <button
               className="btn btn-block submit-btn"
               type="submit"
-              //onClick={handleSubmit}
+              onClick={handleSubmit}
+              disabled={isLoading}
             >
               submit
             </button>
+            <button className='btn btn-block clear-btn' onClick={(e)=>{
+              e.preventDefault()
+              clearValues()
+              console.log("hello")
+            }}>clear</button>
           </div>
         </div>
       </form>

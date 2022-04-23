@@ -21,3 +21,11 @@ export const LOGOUT_USER = "LOGOUT_USER";
 export const UPDATE_USER_START = "UPDATE_USER_BEGIN";
 export const UPDATE_USER_SUCCESSFULL = "UPDATE_USER_SUCCESS";
 export const UPDATE_USER_ERROR = "UPDATE_USER_ERROR";
+//Action to handle Change for Row Slect Options
+export const HANDLE_CHANGE = "HANDLE_CHANGE";
+//Action to handle Change to clear values
+export const CLEAR_VALUES = "CLEAR_VALUES";
+//Actions for CreateJob
+export const CREATE_JOB_BEGIN = "CREATE_JOB_BEGIN";
+export const CREATE_JOB_SUCCESS = "CREATE_JOB_SUCCESS";
+export const CREATE_JOB_ERROR = "CREATE_JOB_ERROR";

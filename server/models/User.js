@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
-import token from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -52,7 +52,7 @@ UserSchema.pre("save", async function () {
 //adding JWT token using create JWT method - to restrict others views job created by a particular user
 UserSchema.methods.newJWT = function () {
   // console.log(this);
-  return token.sign({ userUniqId: this._id }, process.env.JWT_ENCKEY, {
+  return jwt.sign({ userUniqId: this._id }, process.env.JWT_ENCKEY, {
     expiresIn: process.env.JWT_EXPIRY,
   });
 };

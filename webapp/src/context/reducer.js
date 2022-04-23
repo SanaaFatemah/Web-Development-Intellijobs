@@ -15,6 +15,11 @@ import {
   UPDATE_USER_START,
   UPDATE_USER_SUCCESSFULL,
   UPDATE_USER_ERROR,
+  HANDLE_CHANGE,
+  CLEAR_VALUES,
+  CREATE_JOB_BEGIN,
+  CREATE_JOB_SUCCESS,
+  CREATE_JOB_ERROR
 } from "./actions";
 
 import { State } from "./contextApp";
@@ -164,7 +169,46 @@ const reducer = (state, action) => {
       alertMsg: action.payload.msg,
     };
   }
-
+  if (action.type === HANDLE_CHANGE) {
+    return {
+      ...state,
+      [action.payload.name]: action.payload.value,
+    };
+  }
+  if (action.type === CLEAR_VALUES) {
+    const initialState = {
+      isEditing: false,
+      editJobId: "",
+      position: "",
+      company: "",
+      jobLocation: state.userLocation,
+      jobType: "Full-Time",
+      status: "Awaiting Response",
+    }
+    return {
+      ...state,
+      ...initialState
+    };
+  }
+  if(action.type === CREATE_JOB_BEGIN){
+    return {...state, isLoading:true}
+  }
+  if(action.type === CREATE_JOB_SUCCESS){
+    return {...state, 
+      isLoading:false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'New Job Created!'
+    }
+  }
+  if(action.type === CREATE_JOB_ERROR){
+    return {...state, 
+      isLoading:false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
   throw new Error(`not a valid action :${action.type}`);
 };
 export default reducer;
