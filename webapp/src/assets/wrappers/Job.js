@@ -41,17 +41,21 @@ const Wrapper = styled.article`
       letter-spacing: var(--letterSpacing);
     }
   }
-  .pending {
+  .Awaiting {
     background: #fcefc7;
     color: #e9b949;
   }
-  .interview {
+  .Interview {
     background: #e0e8f9;
     color: #647acb;
   }
-  .declined {
+  .Rejected {
     color: #d66a6a;
     background: #ffeeee;
+  }
+  .Accepted {
+    color: #366a45;
+    background: #d5eddc;
   }
   .content {
     padding: 1rem 1.5rem;
@@ -76,11 +80,12 @@ const Wrapper = styled.article`
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
     text-align: center;
-    width: 100px;
+    width: fit-content;
+    padding: 2px 10px;
     height: 30px;
   }
   footer {
-    margin-top: 1rem;
+    margin-top: -3rem;
   }
   .edit-btn,
   .delete-btn {

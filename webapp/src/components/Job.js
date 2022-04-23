@@ -38,10 +38,10 @@ const Job = ({
           <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
           <JobInfo icon={<FaCalendarAlt />} text={date} />
           <JobInfo icon={<FaBriefcase />} text={jobType} />
-          <div className={`status ${status}`}>{status}</div>
+          <div className={`status ${status==='Awaiting Response'?'Awaiting':status==='Interview Scheduled'?'Interview':status}`}>{status}</div>
         </div>
             <footer>
-                <div className="actions">
+                <div >
                     <Link 
                     to='/add-job'
                     className='btn edit-btn'

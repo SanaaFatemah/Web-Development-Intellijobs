@@ -3,7 +3,7 @@ import CustomAPIError from "./custom-api.js";
 class UnAuthenticated extends CustomAPIError {
   constructor(message) {
     super(message);
-    this.statusCode = StatusCodes.UNAUTHORIZED;
+    this.statusCode = StatusCodes.UNAUTHORIZED; 
   }
 }
 
