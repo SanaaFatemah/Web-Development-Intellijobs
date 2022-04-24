@@ -90,11 +90,11 @@ const showStats = async (req, res) => {
   }, {});
 
   //for a new user when there are no jobs added yet - setting up default stats object
-  const defaultStats = {
-    Awaiting: stats.Response || 0,
-    Interview: stats.Interview || 0,
-    Rejected: stats.Rejected || 0,
-    Accepted: stats.Accepted || 0,
+  //const defaultStats = {
+    // Awaiting: stats.Awaiting Response || 0,
+    // Interview: stats.Interview Scheduled|| 0,
+    // Rejected: stats.Rejected || 0,
+    // Accepted: stats.Accepted || 0,
   };
 
   //res.status(StatusCodes.OK).json({ stats });
