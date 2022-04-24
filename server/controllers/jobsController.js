@@ -97,7 +97,16 @@ const showStats = async (req, res) => {
     Accepted: stats.Accepted || 0}
 
   //default value for stats chart
-  let monthlyApplications = [];
+  let monthlyApplications = await Job.aggregate([
+    {$match:{createdBy:mongoose.Types.ObjectId(req.user.userId)}},
+    {$group:{
+      _id: {year:{$year:'$createdAt' } , month :{$month : '$createdAt'}},
+      count: {$sum: 1}
+    },
+  },
+  {$sort:{'_id.year':-1, '_id.month':-1}},
+  {$limit:6},
+  ])
   res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
 };
 
