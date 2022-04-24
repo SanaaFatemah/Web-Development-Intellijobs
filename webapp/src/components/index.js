@@ -8,5 +8,8 @@ import JobInfo from "./JobInfo";
 import Navbar from "./Navbar";
 import SearchContainer from "./SearchContainer";
 import SmallSidebar from "./SmallSidebar";
+import StatsContainer from "./StatsContainer";
+import ChartsContainer from "./ChartsContainer";
+import Loading from './Loading';
 
-export { FormInput, AlertMessage , Navbar, SmallSidebar,BigSidebar, FormRowSelect, SearchContainer,JobsContainer,Job, JobInfo};
+export { FormInput, AlertMessage , Navbar, SmallSidebar,BigSidebar, FormRowSelect, SearchContainer,JobsContainer,Job, JobInfo, StatsContainer, ChartsContainer, Loading};
