@@ -8,8 +8,6 @@
 
 ### 1. Summary
 
-# IntelliJobs
-
 To create an application that provides job applicants a canvas where they can track the statuses of all their job applications. it will give the user an analytical view of the status of their job applications by displaying the statistics. the applicant will have a search page where he can view all his applications regardless fo the status. the applicant can add a new job that he has applied to by filling out details such as Job position, Company name, Job location etc.
 The main aim of building this application is to give them a platform where they can easily update and track their job applications.
 
