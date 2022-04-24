@@ -81,7 +81,27 @@ const showStats = async (req, res) => {
     { $group: { _id: "$status", count: { $sum: 1 } } },
   ]);
   //res.send("show stats");
-  res.status(StatusCodes.OK).json({ stats });
+
+  //using reduce which returns an object of diff status title by iterrating over the array
+  stats = stats.reduce((acc, curr) => {
+    const { _id: title, count } = curr;
+    acc[title] = count;
+    return acc;
+  }, {});
+
+  //for a new user when there are no jobs added yet - setting up default stats object
+  const defaultStats = {
+    Awaiting: stats.Response || 0,
+    Interview: stats.Interview || 0,
+    Rejected: stats.Rejected || 0,
+    Accepted: stats.Accepted || 0,
+  };
+
+  //res.status(StatusCodes.OK).json({ stats });
+
+  //default value for stats chart
+  let monthlyApplications = [];
+  res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
 };
 
 export { createJob, deleteJob, getAllJobs, updateJob, showStats };
