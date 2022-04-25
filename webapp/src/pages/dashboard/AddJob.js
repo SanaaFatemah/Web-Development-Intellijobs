@@ -28,17 +28,17 @@ const AddJob = () => {
     //   displayAlert();
     //   return;
     // }
-    if(isEditing){
-      editJob()
-      return
+    if (isEditing) {
+      editJob();
+      return;
     }
-    createJob()
+    createJob();
   };
 
   const handleJobInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    handleChange({name, value})
+    handleChange({ name, value });
   };
 
   return (
@@ -72,18 +72,19 @@ const AddJob = () => {
             handleChange={handleJobInput}
           />
           {/* job status */}
-          <FormRowSelect 
-            name="status" 
-            value={status} 
+          <FormRowSelect
+            name="status"
+            value={status}
             handleChange={handleJobInput}
-            list={statusOptions} />
+            list={statusOptions}
+          />
           {/* job type */}
-          <FormRowSelect 
-            name="jobType" 
-            labelText='Job type'
-            value={jobType} 
+          <FormRowSelect
+            name="jobType"
+            labelText="Job type"
+            value={jobType}
             handleChange={handleJobInput}
-            list={jobTypeOptions} 
+            list={jobTypeOptions}
           />
           {/* btn container */}
           <div className="btn-container">
@@ -95,11 +96,16 @@ const AddJob = () => {
             >
               submit
             </button>
-            <button className='btn btn-block clear-btn' onClick={(e)=>{
-              e.preventDefault()
-              clearValues()
-              console.log("hello")
-            }}>clear</button>
+            <button
+              className="btn btn-block clear-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                clearValues();
+                //console.log("hello")
+              }}
+            >
+              clear
+            </button>
           </div>
         </div>
       </form>

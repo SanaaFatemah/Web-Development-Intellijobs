@@ -47,7 +47,7 @@ const SearchContainer = () => {
             name="searchStatus"
             value={searchStatus}
             handleChange={handleSearch}
-            list={["all", ...statusOptions]}
+            list={["All", ...statusOptions]}
           ></FormRowSelect>
 
           {/* search by job Type */}
@@ -57,7 +57,7 @@ const SearchContainer = () => {
             name="searchType"
             value={searchType}
             handleChange={handleSearch}
-            list={["all", ...jobTypeOptions]}
+            list={["All", ...jobTypeOptions]}
           ></FormRowSelect>
 
           {/* sort by job application status */}

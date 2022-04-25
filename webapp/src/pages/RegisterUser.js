@@ -15,8 +15,15 @@ const State = {
 const RegisterUser = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState(State);
-  const { user, isLoading, displayAlertMsg, showAlert, userRegistration, loginUser , setupUser} =
-    useContextApp();
+  const {
+    user,
+    isLoading,
+    displayAlertMsg,
+    showAlert,
+    userRegistration,
+    loginUser,
+    setupUser,
+  } = useContextApp();
   //console.log(state);
 
   const toggleRegister = () => {
@@ -46,9 +53,17 @@ const RegisterUser = () => {
 
     const currentUser = { name, password, email };
     if (isaMember) {
-      setupUser({currentUser, endPoint:'login', alertMsg:'Login successful! Redirecting...'})
+      setupUser({
+        currentUser,
+        endPoint: "login",
+        alertMsg: "Login successful! Redirecting...",
+      });
     } else {
-      setupUser({currentUser, endPoint:'register', alertMsg:'User Created! Redirecting...'})
+      setupUser({
+        currentUser,
+        endPoint: "register",
+        alertMsg: "User Created! Redirecting...",
+      });
     }
     //console.log(values);
   };
