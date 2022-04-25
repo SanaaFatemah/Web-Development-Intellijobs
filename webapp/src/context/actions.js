@@ -46,7 +46,6 @@ export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
 //Actions to add functionality to  EDITJOBS
 export const SET_EDIT_JOB = "SET_EDIT_JOB";
 
-
 //Actions to add functionality to  DELETEJOBS
 export const DELETE_JOB_BEGIN = "DELETE_JOB_BEGIN";
 
@@ -57,3 +56,6 @@ export const EDIT_JOB_ERROR = "EDIT_JOB_ERROR";
 
 export const SHOW_STATS_BEGIN = "SHOW_STATS_BEGIN";
 export const SHOW_STATS_SUCCESS = "SHOW_STATS_SUCCESS";
+
+//Actions for clear button on job search page
+export const CLEAR_SEARCH = "CLEAR_SEARCH";

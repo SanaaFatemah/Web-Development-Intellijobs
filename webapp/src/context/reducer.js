@@ -28,7 +28,8 @@ import {
   EDIT_JOB_SUCCESS,
   EDIT_JOB_ERROR,
   SHOW_STATS_BEGIN,
-  SHOW_STATS_SUCCESS
+  SHOW_STATS_SUCCESS,
+  CLEAR_SEARCH,
 } from "./actions";
 
 import { State } from "./contextApp";
@@ -193,47 +194,48 @@ const reducer = (state, action) => {
       jobLocation: state.userLocation,
       jobType: "Full-Time",
       status: "Awaiting Response",
-    }
+    };
     return {
       ...state,
-      ...initialState
+      ...initialState,
     };
   }
   if (action.type === CREATE_JOB_BEGIN) {
-    return { ...state, isLoading: true }
+    return { ...state, isLoading: true };
   }
   if (action.type === CREATE_JOB_SUCCESS) {
     return {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'success',
-      alertText: 'New Job Created!'
-    }
+      alertType: "success",
+      alertText: "New Job Created!",
+    };
   }
   if (action.type === CREATE_JOB_ERROR) {
     return {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'danger',
+      alertType: "danger",
       alertText: action.payload.msg,
-    }
+    };
   }
   if (action.type === GET_JOBS_BEGIN) {
-    return { ...state, isLoading: true, showAlert: false }
+    return { ...state, isLoading: true, showAlert: false };
   }
   if (action.type === GET_JOBS_SUCCESS) {
     return {
-      ...state, isLoading: false,
+      ...state,
+      isLoading: false,
       jobs: action.payload.jobs,
       totalJobs: action.payload.totalJobs,
       numOfPages: action.payload.numOfPages,
-    }
+    };
   }
   if (action.type === SET_EDIT_JOB) {
-    const job = state.jobs.find((job) => job._id === action.payload.id)
-    const { _id, position, company, jobLocation, jobType, status } = job
+    const job = state.jobs.find((job) => job._id === action.payload.id);
+    const { _id, position, company, jobLocation, jobType, status } = job;
     return {
       ...state,
       isEditing: true,
@@ -243,11 +245,11 @@ const reducer = (state, action) => {
       jobLocation,
       jobType,
       status,
-    }
+    };
   }
 
   if (action.type === DELETE_JOB_BEGIN) {
-    return { ...state, isLoading: true }
+    return { ...state, isLoading: true };
   }
 
   if (action.type === EDIT_JOB_BEGIN) {
@@ -262,7 +264,7 @@ const reducer = (state, action) => {
       isLoading: false,
       showAlert: true,
       alertType: "success",
-      alertText: 'Job Updated!',
+      alertText: "Job Updated!",
     };
   }
   if (action.type === EDIT_JOB_ERROR) {
@@ -278,7 +280,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: true,
-      showAlert: false
+      showAlert: false,
     };
   }
 
@@ -287,9 +289,20 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       stats: action.payload.stats,
-      monthlyApplications: action.payload.monthlyApplications
+      monthlyApplications: action.payload.monthlyApplications,
     };
   }
+
+  if (action.type === CLEAR_SEARCH) {
+    return {
+      ...state,
+      search: "",
+      searchStatus: "all",
+      searchType: "all",
+      sort: "latest",
+    };
+  }
+
   throw new Error(`not a valid action :${action.type}`);
 };
 export default reducer;

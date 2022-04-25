@@ -7,7 +7,7 @@ import {
 } from "../errors/index.js";
 import checkPermissions from "../utils/checkPermission.js";
 import mongoose from "mongoose";
-import moment from 'moment'
+import moment from "moment";
 
 const createJob = async (req, res) => {
   const { position, company } = req.body;
@@ -23,58 +23,56 @@ const createJob = async (req, res) => {
 };
 
 const getAllJobs = async (req, res) => {
-  const {status, jobType, sort, search} = req.query
+  const { status, jobType, sort, search } = req.query;
 
-const queryObject = {
-  createdBy: req.user.userId,
+  const queryObject = {
+    createdBy: req.user.userId,
+  };
 
-}
+  //add stuff based on condition
 
-//add stuff based on condition
+  if (status && status !== "all") {
+    queryObject.status = status;
+  }
 
-if (status != 'all')
-{
-  queryObject.status = status
-}
+  if (jobType && jobType !== "all") {
+    queryObject.jobType = jobType;
+  }
 
-if (jobType !== 'all')
-{
-  queryObject.jobType = jobType
-}
+  if (search) {
+    queryObject.position = { $regex: search, $options: "i" };
+  }
 
-if (search)
-{
-  queryObject.position = {$regex:search, $options:'i'}
-}
- 
-//No await
- let result =  Job.find(queryObject);
+  //No await
+  //console.log(queryObject);
+  let result = Job.find(queryObject);
 
-//chain sort condition
+  //chain sort condition
 
-if (sort === 'latest')
-{
-  result = result.sort('-createdAt')
-}
+  if (sort === "latest") {
+    result = result.sort("-createdAt");
+  }
 
-if (sort === 'oldest')
-{
-  result = result.sort('createdAt')
-}
+  if (sort === "oldest") {
+    result = result.sort("createdAt");
+  }
 
-if (sort === 'a-z')
-{
-  result = result.sort('position')
-}
+  if (sort === "a-z") {
+    result = result.sort("position");
+  }
 
-if (sort === 'z-a')
-{
-  result = result.sort('-position')
-}
+  if (sort === "z-a") {
+    result = result.sort("-position");
+  }
 
+  //using the limit and skip from mongoose to limit the number of jobs displayed
 
-const jobs = await result
+  const limit = 10;
+  const skip = 1;
 
+  result = result.skip(skip).limit(limit);
+
+  const jobs = await result;
 
   res
     .status(StatusCodes.OK)
@@ -145,35 +143,38 @@ const showStats = async (req, res) => {
 
   //for a new user when there are no jobs added yet - setting up default stats object
   const defaultStats = {
-    Awaiting: stats['Awaiting Response'] || 0,
-    Interview: stats['Interview Scheduled'] || 0,
+    Awaiting: stats["Awaiting Response"] || 0,
+    Interview: stats["Interview Scheduled"] || 0,
     Rejected: stats.Rejected || 0,
-    Accepted: stats.Accepted || 0}
+    Accepted: stats.Accepted || 0,
+  };
 
   //default value for stats chart
   let monthlyApplications = await Job.aggregate([
-    {$match:{createdBy:mongoose.Types.ObjectId(req.user.userId)}},
-    {$group:{
-      _id: {year:{$year:'$createdAt' } , month :{$month : '$createdAt'}},
-      count: {$sum: 1}
+    { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
+    {
+      $group: {
+        _id: { year: { $year: "$createdAt" }, month: { $month: "$createdAt" } },
+        count: { $sum: 1 },
+      },
     },
-  },
-  {$sort:{'_id.year':-1, '_id.month':-1}},
-  {$limit:6},
-  ])
+    { $sort: { "_id.year": -1, "_id.month": -1 } },
+    { $limit: 6 },
+  ]);
 
-  monthlyApplications = monthlyApplications.map((item) => {
-    const {
-      _id:{year,month},
-       count,
-      } = item
+  monthlyApplications = monthlyApplications
+    .map((item) => {
+      const {
+        _id: { year, month },
+        count,
+      } = item;
       const date = moment()
-      .month(month-1)
-      .year(year)
-      .format('MMM Y')
-      return {date, count}
-  })
-  .reverse()
+        .month(month - 1)
+        .year(year)
+        .format("MMM Y");
+      return { date, count };
+    })
+    .reverse();
   res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
 };
 
