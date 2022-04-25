@@ -19,6 +19,7 @@ const JobSchema = new mongoose.Schema(
         "Rejected",
         "Awaiting Response",
         "Accepted",
+        
       ],
       default: "Awaiting Response",
     },
