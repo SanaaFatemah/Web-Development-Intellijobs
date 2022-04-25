@@ -1,6 +1,6 @@
 import StatItem from "./StatItem"
 import { useContextApp } from "../context/contextApp"
-import {FaSuitcaseRolling, FaBug, FaCalendarCheck} from 'react-icons/fa'
+import {FaSuitcaseRolling, FaBug, FaCalendarCheck, FaCheckCircle} from 'react-icons/fa'
 import Wrapper from '../assets/wrappers/StatsContainer'
 
 
@@ -9,22 +9,29 @@ const StatsContainer = () => {
 
     const defaultStats = [
         {
+            title: 'Accepted',
+            count: stats.Accepted || 0,
+            icon: <FaCheckCircle />,
+            color: '#82db7f',
+            bcg: '#d6f2d5'
+        },
+        {
             title: 'Pending',
-            count: stats.pending || 0,
+            count: stats.Awaiting || 0,
             icon: <FaSuitcaseRolling />,
             color: '#e9b949',
             bcg: '#fcefc7'
         },
         {
             title: 'Interview',
-            count: stats.interview || 0,
+            count: stats.Interview || 0,
             icon: <FaCalendarCheck />,
             color: '#647acb',
             bcg: '#e0e8f9'
         },
         {
             title: 'Rejected',
-            count: stats.declined || 0,
+            count: stats.Rejected || 0,
             icon: <FaBug />,
             color: '#d66a6a',
             bcg: '#ffeeee'
