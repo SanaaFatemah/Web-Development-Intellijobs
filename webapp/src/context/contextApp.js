@@ -107,9 +107,9 @@ const ProviderApp = ({ children }) => {
       return response;
     },
     (error) => {
-      //console.log(error.response);
+      console.log(error.response);
       if (error.response.status === 401) {
-        //console.log("AUTHENTICATION ERROR");
+        console.log("AUTHENTICATION ERROR");
         logoutUser();
       }
       return Promise.reject(error);
@@ -144,7 +144,7 @@ const ProviderApp = ({ children }) => {
     dispatch({ type: REGISTER_USER_START });
     try {
       const response = await axios.post("/api/v1/auth/register", currentUser);
-      console.log(response);
+      //console.log(response);
       const { user, token, location } = response.data;
       dispatch({
         type: REGISTER_USER_SUCCESSFUL,
@@ -181,7 +181,7 @@ const ProviderApp = ({ children }) => {
       });
       addUserToLocalStorage({ user, token, location });
     } catch (error) {
-      //console.log(error.response);
+      console.log(error.response);
       dispatch({
         type: LOGIN_USER_ERROR,
         payload: { msg: error.response.data.msg },
@@ -210,7 +210,7 @@ const ProviderApp = ({ children }) => {
       });
       addUserToLocalStorage({ user, token, location });
     } catch (error) {
-      //console.log(error.response);
+      console.log(error.response);
       dispatch({
         type: SETUP_USER_ERROR,
         payload: { msg: error.response.data.msg },

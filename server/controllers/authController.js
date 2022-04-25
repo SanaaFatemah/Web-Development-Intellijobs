@@ -38,7 +38,7 @@ const loginUser = async (req, res) => {
   if (!user) {
     throw new UnAuthenticated("Invalid Credentials");
   }
-  console.log(user);
+  //console.log(user);
   const isPasswordCorrect = await user.comparePassword(password);
   if (!isPasswordCorrect) {
     throw new UnAuthenticated("Invalid Credentials");
@@ -51,19 +51,19 @@ const loginUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const {email, name, lastName, location} = req.body
-  if(!email || !name || !lastName || !location) {
-    throw new BadRequestError('Please fill all details!')
+  const { email, name, lastName, location } = req.body;
+  if (!email || !name || !lastName || !location) {
+    throw new BadRequestError("Please fill all details!");
   }
-  const user = await User.findOne({_id:req.user.userId});
-  user.email = email
-  user.name = name
-  user.lastName = lastName
-  user.location = location
+  const user = await User.findOne({ _id: req.user.userId });
+  user.email = email;
+  user.name = name;
+  user.lastName = lastName;
+  user.location = location;
 
-  await user.save()
+  await user.save();
 
-  const token = user.newJWT()
+  const token = user.newJWT();
   res.status(StatusCodes.OK).json({ user, token, location: user.location });
 
   // res.send("updated the user");
