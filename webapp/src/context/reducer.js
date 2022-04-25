@@ -297,9 +297,9 @@ const reducer = (state, action) => {
     return {
       ...state,
       search: "",
-      searchStatus: "all",
-      searchType: "all",
-      sort: "latest",
+      searchStatus: "All",
+      searchType: "All",
+      sort: "Latest",
     };
   }
 

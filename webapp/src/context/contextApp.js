@@ -70,10 +70,10 @@ const State = {
   stats: {},
   monthlyApplications: [],
   search: "",
-  searchStatus: "all",
-  searchType: "all",
-  sort: "latest",
-  sortOptions: ["latest", "oldest", "a-z", "z-a"],
+  searchStatus: "All",
+  searchType: "All",
+  sort: "Latest",
+  sortOptions: ["Latest", "oldest", "a-z", "z-a"],
 };
 
 const ContextApp = React.createContext();

@@ -31,11 +31,11 @@ const getAllJobs = async (req, res) => {
 
   //add stuff based on condition
 
-  if (status && status !== "all") {
+  if (status && status !== "All") {
     queryObject.status = status;
   }
 
-  if (jobType && jobType !== "all") {
+  if (jobType && jobType !== "All") {
     queryObject.jobType = jobType;
   }
 
@@ -49,7 +49,7 @@ const getAllJobs = async (req, res) => {
 
   //chain sort condition
 
-  if (sort === "latest") {
+  if (sort === "Latest") {
     result = result.sort("-createdAt");
   }
 
