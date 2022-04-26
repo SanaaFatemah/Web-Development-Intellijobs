@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { AlertMessage, FormInput } from "../components";
 import { useContextApp } from "../context/contextApp";
 import { useNavigate } from "react-router-dom";
+import emailjs from "emailjs-com";
 
 const State = {
   name: "",
@@ -50,7 +51,6 @@ const RegisterUser = () => {
       showAlert();
       return;
     }
-
     const currentUser = { name, password, email };
     if (isaMember) {
       setupUser({
@@ -63,6 +63,19 @@ const RegisterUser = () => {
         currentUser,
         endPoint: "register",
         alertMsg: "User Created! Redirecting...",
+      });
+      e.preventDefault();
+
+      let reply_to = e.target[1].value;
+      var contactParams = {
+        reply_to: reply_to
+      }
+
+      emailjs.send('service_07228zq', 'template_g23o757', contactParams, '9HB12qcHBbdIggQe6')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
       });
     }
     //console.log(values);
