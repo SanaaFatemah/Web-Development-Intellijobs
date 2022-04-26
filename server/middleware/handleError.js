@@ -1,6 +1,5 @@
 import { StatusCodes } from "http-status-codes";
 const handleErrorMiddleware = (err, req, res, next) => {
-  console.log(err);
 
   const defaultError = {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,

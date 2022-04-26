@@ -33,6 +33,7 @@ import {
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
   CLEAR_SEARCH,
+  CHANGE_PAGE,
 } from "./actions";
 
 // set as default
@@ -280,9 +281,9 @@ const ProviderApp = ({ children }) => {
     hideAlert();
   };
   const getJobs = async () => {
-    const { search, searchStatus, searchType, sort } = state;
+    const { page, search, searchStatus, searchType, sort } = state;
     //constructing the url with search query parameters
-    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+    let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
     if (search) {
       url = url + `&search=${search}`;
     }
@@ -300,8 +301,7 @@ const ProviderApp = ({ children }) => {
         },
       });
     } catch (error) {
-      console.log(error.response);
-      // logoutUser()
+      logoutUser()
     }
     hideAlert();
   };
@@ -344,8 +344,7 @@ const ProviderApp = ({ children }) => {
       await authFetch.delete(`/jobs/${id}`);
       getJobs();
     } catch (error) {
-      console.log(error.response);
-      // logoutuser()
+      logoutUser()
     }
   };
   const clearSearch = () => {
@@ -365,10 +364,13 @@ const ProviderApp = ({ children }) => {
         },
       });
     } catch (error) {
-      console.log(error.response);
-      // logoutUser()
+      logoutUser()
     }
   };
+
+  const changePage = (page) => {
+    dispatch({type:CHANGE_PAGE,payload:{ page }})
+  }
 
   return (
     <ContextApp.Provider
@@ -390,6 +392,7 @@ const ProviderApp = ({ children }) => {
         deleteJob,
         showStats,
         clearSearch,
+        changePage,
       }}
     >
       {children}

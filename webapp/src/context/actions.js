@@ -59,3 +59,6 @@ export const SHOW_STATS_SUCCESS = "SHOW_STATS_SUCCESS";
 
 //Actions for clear button on job search page
 export const CLEAR_SEARCH = "CLEAR_SEARCH";
+
+//Actions for changePage
+export const CHANGE_PAGE = "CHANGE_PAGE";

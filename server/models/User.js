@@ -31,13 +31,15 @@ const UserSchema = new mongoose.Schema({
     type: String,
     maxlength: 20,
     trim: true,
-    default: "last name",
+    //default: "",
   },
   location: {
     type: String,
     maxlength: 20,
     trim: true,
-    default: "my city",
+    //default: "my nation",
+    //placeholder:"Location"
+
   },
 });
 
