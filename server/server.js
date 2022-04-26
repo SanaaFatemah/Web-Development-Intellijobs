@@ -8,6 +8,17 @@ import morgan from "morgan";
 // Database and authentication of user
 import connectDB from "./db/connect.js";
 
+
+//path
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import path from 'path'
+
+import helmet from 'helmet'
+import xss from 'xss-clean'
+import mongoSanitize from 'express-mongo-sanitize'
+ 
+
 //routers
 import authRouter from "./routes/authRoutes.js";
 import jobsRouter from "./routes/jobsRoutes.js";
@@ -18,11 +29,19 @@ import doesNotExistMiddleware from "./middleware/doesNotExist.js";
 import handleErrorMiddleware from "./middleware/handleError.js";
 import authenticateUser from './middleware/auth.js'
 
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+app.use(express.static(path.resolve(__dirname, '../webapp/build')))
+
 //app.use(cors());
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
 app.use(express.json());
+
+app.use(helmet());
+app.use(xss());
+app.use(mongoSanitize());
 
 app.get("/api/v1", (req, res) => {
   // throw new Error('error')
@@ -36,6 +55,10 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/jobs",authenticateUser, jobsRouter);
+
+app.get('*',(req,res)=>{
+  res.sendFile(path.resolve(__dirname, '../webapp/build', 'index.html'))
+})
 
 app.use(doesNotExistMiddleware);
 app.use(handleErrorMiddleware);

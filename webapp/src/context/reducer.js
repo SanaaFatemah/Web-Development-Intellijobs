@@ -30,6 +30,7 @@ import {
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
   CLEAR_SEARCH,
+  CHANGE_PAGE,
 } from "./actions";
 
 import { State } from "./contextApp";
@@ -182,6 +183,7 @@ const reducer = (state, action) => {
   if (action.type === HANDLE_CHANGE) {
     return {
       ...state,
+      page:1,
       [action.payload.name]: action.payload.value,
     };
   }
@@ -301,6 +303,11 @@ const reducer = (state, action) => {
       searchType: "All",
       sort: "Latest",
     };
+  }
+
+  if(action.type===CHANGE_PAGE)
+  {
+    return {...state, page:action.payload.page}
   }
 
   throw new Error(`not a valid action :${action.type}`);
