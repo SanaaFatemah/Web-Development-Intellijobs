@@ -1,13 +1,5 @@
 # IntelliJobs
 
-## Contents:
-
-1. Authors
-2. Objective
-3. User Stories
-4. Domain Diagram
-5.
-
 <table>
     <thead>
       <tr>
@@ -36,12 +28,12 @@
     </tbody>
 </table>
 
-### 2. Objective
+### 1. Objective
 
 To create an application that provides job applicants a canvas where they can track the statuses of all their job applications. it will give the user an analytical view of the status of their job applications by displaying the statistics. The applicant will have a search page where he can view all his applications regardless fo the status. The applicant can add a new job that he has applied to by filling out details such as Job position, Company name, Job location etc.
 The main aim of building this application is to give them a platform where they can easily update and track their job applications during the job search process.
 
-### 3. User stories
+### 2. User stories
 
 - As a user, I want to register for the application.
 - As a user, I want to receive an welcome email after registration.
@@ -55,15 +47,51 @@ The main aim of building this application is to give them a platform where they 
 - As a user, I want to delete my job applications.
 - As a user, I want to view a calendar with my interview scedules.
 
-### 4. Domain Diagram
+### 3. Domain Diagram
 
 ![Domain Diagram](DomainDiagram.png?raw=true "Page view")
 
 final-project-webdevs/DomainDiagram.png
 
-### 5. Authors
+### 4.Technology Used
 
-Achintya Singh
-Ashish Kumar Ramesh
-Raksha Kagadalu Raju
-Sanaa Rupani
+- React
+- HTML
+- SCSS
+- Nodejs
+- Express
+- JavaScript
+- MongoDB Atlas
+
+### 5. Prerequisites
+
+- Node.js
+- MongoDB
+- npm
+- VScode
+
+### 6. Running application locally
+
+- Clone the repository
+
+```
+$ git clone git@github.com:neu-mis-info6150-spring-2022/final-project-webdevs.git
+```
+
+- Navigate to `webapp` folder to run frontend
+
+```
+$ cd webapp
+$ npm install
+$ npm start
+```
+
+- Navigate to `server` folder to run backend
+
+```
+$ cd server
+$ npm install
+$ node server
+```
+
+<b>Note</b>: Please find detailed README's in server and webapp for more information
