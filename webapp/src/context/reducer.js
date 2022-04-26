@@ -97,7 +97,7 @@ const reducer = (state, action) => {
       jobLocation: action.payload.location,
       displayAlertMsg: true,
       alertType: "success",
-      alertMsg: "Login successful! Redirecting...",
+      alertMsg: "Login successful! Please wait...",
     };
   }
 
@@ -183,7 +183,7 @@ const reducer = (state, action) => {
   if (action.type === HANDLE_CHANGE) {
     return {
       ...state,
-      page:1,
+      page: 1,
       [action.payload.name]: action.payload.value,
     };
   }
@@ -305,9 +305,8 @@ const reducer = (state, action) => {
     };
   }
 
-  if(action.type===CHANGE_PAGE)
-  {
-    return {...state, page:action.payload.page}
+  if (action.type === CHANGE_PAGE) {
+    return { ...state, page: action.payload.page };
   }
 
   throw new Error(`not a valid action :${action.type}`);
