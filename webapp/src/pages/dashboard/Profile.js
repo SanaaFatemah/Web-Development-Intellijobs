@@ -30,6 +30,7 @@ const Profile = () => {
             name="name"
             value={name}
             handleChange={(e) => setName(e.target.value)}
+            placeholder = "Enter your first name"
           />
           <FormInput
             type="text"
@@ -37,6 +38,7 @@ const Profile = () => {
             name="lastName"
             value={lastName}
             handleChange={(e) => setLastName(e.target.value)}
+            placeholder = "Enter your last name"
           />
           <FormInput
             type="email"
@@ -44,12 +46,14 @@ const Profile = () => {
             name="email"
             value={email}
             handleChange={(e) => setEmail(e.target.value)}
+            placeholder = "Enter an email"
           />
           <FormInput
             type="text"
             name="location"
             value={location}
             handleChange={(e) => setLocation(e.target.value)}
+            placeholder = "Enter your location"
           />
           <button className="btn btn-block" type="submit" disabled={isLoading}>
             {isLoading ? "Loading.." : "Save"}
