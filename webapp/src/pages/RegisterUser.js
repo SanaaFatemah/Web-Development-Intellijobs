@@ -1,3 +1,4 @@
+import "../sass/RegistrationPage.scss";
 import React from "react";
 import { useState, useEffect } from "react";
 import { AlertMessage, FormInput } from "../components";
@@ -89,11 +90,16 @@ const RegisterUser = () => {
   }, [user, navigate]);
 
   return (
-    <div>
+    <div className="regCom">
       {/*Form HTML element for user Login or Registration */}
-      <form className="form" onSubmit={fnSubmit}>
+
+      <h1>
+        Intelli<b>Jobs</b>
+      </h1>
+      <form className="formReg" onSubmit={fnSubmit}>
         <h3>{values.isaMember ? "Log-in" : "Register Now"}</h3>
         {displayAlertMsg && <AlertMessage></AlertMessage>}
+
         {/* Form Name input field HTML elements displayed only for non members */}
         {!values.isaMember && (
           <FormInput
@@ -129,6 +135,7 @@ const RegisterUser = () => {
           </button>
         </p>
       </form>
+      <h1></h1>
     </div>
   );
 };
