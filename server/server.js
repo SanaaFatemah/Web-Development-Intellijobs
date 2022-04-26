@@ -31,7 +31,7 @@ import authenticateUser from './middleware/auth.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-app.use(express.static(path.resolve(__dirname, '../webapp/build')))
+//app.use(express.static(path.resolve(__dirname, '../webapp/build')))
 
 //app.use(cors());
 if (process.env.NODE_ENV !== "production") {
