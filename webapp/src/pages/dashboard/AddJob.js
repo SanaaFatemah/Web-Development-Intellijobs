@@ -1,6 +1,6 @@
 import { FormInput, AlertMessage, FormRowSelect } from "../../components";
 import { useContextApp } from "../../context/contextApp";
-import Wrapper from "../../assets/wrappers/DashboardFormPage";
+import "../../sass/DashboardPage.scss";
 
 const AddJob = () => {
   const {
@@ -25,7 +25,7 @@ const AddJob = () => {
     e.preventDefault();
 
     // if (!position || !company || !jobLocation) {
-    //   displayAlert();
+    //   showAlert();
     //   return;
     // }
     if (isEditing) {
@@ -42,10 +42,10 @@ const AddJob = () => {
   };
 
   return (
-    <Wrapper>
+    <div className="jobCommon">
       <form className="form">
         <h3>{isEditing ? "Edit Job Status" : "Add New Job"}</h3>
-        {displayAlert && <AlertMessage />}
+        {showAlert && <AlertMessage />}
 
         {/*HTML element for position field */}
         <div className="form-center">
@@ -109,7 +109,7 @@ const AddJob = () => {
           </div>
         </div>
       </form>
-    </Wrapper>
+    </div>
   );
 };
 

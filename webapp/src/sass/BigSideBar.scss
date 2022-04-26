@@ -1,12 +1,11 @@
-import styled from 'styled-components'
-
-const Wrapper = styled.aside`
+.bigSidecom {
   display: none;
   @media (min-width: 992px) {
     display: block;
     box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
+    color: beige !important;
     .sidebar-container {
-      background: var(--white);
+      background: var(--grey-900);
       min-height: 100vh;
       height: 100%;
       width: 250px;
@@ -34,7 +33,7 @@ const Wrapper = styled.aside`
     .nav-link {
       display: flex;
       align-items: center;
-      color: var(--grey-500);
+      color: var(--grey-51);
       padding: 1rem 0;
       padding-left: 2.5rem;
       text-transform: capitalize;
@@ -56,11 +55,10 @@ const Wrapper = styled.aside`
       transition: var(--transition);
     }
     .active {
-      color: var(--grey-900);
+      color: var(--grey-500);
     }
     .active .icon {
-      color: var(--primary-500);
+      color: var(--primary-700);
     }
   }
-`
-export default Wrapper
+}

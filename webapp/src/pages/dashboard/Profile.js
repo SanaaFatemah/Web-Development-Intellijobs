@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Wrapper from "../../assets/wrappers/DashboardFormPage";
+import "../../sass/DashboardPage.scss";
 import { FormInput, AlertMessage } from "../../components";
 import { useContextApp } from "../../context/contextApp";
+
 const Profile = () => {
   const { user, showAlert, updateUser, isLoading } = useContextApp();
   const [name, setName] = useState(user?.name);
@@ -20,7 +21,7 @@ const Profile = () => {
   };
 
   return (
-    <Wrapper>
+    <div className="jobCommon">
       <form onSubmit={handleSubmit} className="form">
         <h3>profile</h3>
         {showAlert && <AlertMessage />}
@@ -56,7 +57,7 @@ const Profile = () => {
           </button>
         </div>
       </form>
-    </Wrapper>
+    </div>
   );
 };
 

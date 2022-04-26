@@ -2,7 +2,8 @@ import { useContextApp } from "../context/contextApp";
 import { useEffect } from "react";
 import Loading from "./Loading";
 import Job from "./Job";
-import Wrapper from "../assets/wrappers/JobsContainer";
+import "../sass/JobContainer.scss";
+
 const JobsContainer = () => {
   const {
     getJobs,
@@ -25,14 +26,14 @@ const JobsContainer = () => {
 
   if (jobs.length === 0) {
     return (
-      <Wrapper>
+      <div className="jobContaier">
         <h2>No Jobs to Display...</h2>
-      </Wrapper>
+      </div>
     );
   }
 
   return (
-    <Wrapper>
+    <div className="jobContaier">
       <h5>
         {totalJobs} job{jobs.length > 1 && "s"} found
       </h5>
@@ -42,7 +43,7 @@ const JobsContainer = () => {
         })}
       </div>
       {/*pagination buttons*/}
-    </Wrapper>
+    </div>
   );
 };
 
