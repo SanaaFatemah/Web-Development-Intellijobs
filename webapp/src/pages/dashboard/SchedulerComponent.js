@@ -83,11 +83,20 @@ const SchedulerComponent = () => {
     return(
         <>
             {/* //<button onClick={testfn}>test</button> */}
+            <div style={{width: '100%',
+                position:'relative',
+                top:50, 
+                height: 'auto',
+                zIndex:-1 }}>
             <FullCalendar
             plugins={[ dayGridPlugin ]}
             initialView="dayGridMonth"
             events={test}
-            ref={calRef}></FullCalendar>
+            ref={calRef}
+            ></FullCalendar>
+                
+            </div>
+            
         </>
     )
 
