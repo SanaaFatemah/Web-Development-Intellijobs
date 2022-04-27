@@ -1,5 +1,6 @@
 import "../sass/JobDetails.scss";
 
+//component to add job icon and job details to each job
 const JobInfo = ({ icon, text }) => {
   return (
     <div className="jInfoCom">
