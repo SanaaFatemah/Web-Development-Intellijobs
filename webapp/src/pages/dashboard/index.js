@@ -5,12 +5,5 @@ import SchedulerComponent from "./SchedulerComponent";
 import SharedLayout from "./SharedLayout";
 import Stats from "./Stats";
 
-
-export{
-    AllJob,
-    AddJob,
-    Profile,
-    Stats,
-    SharedLayout,
-    SchedulerComponent
-}
+//exporting all the nested pages inside the homepage
+export { AllJob, AddJob, Profile, Stats, SharedLayout, SchedulerComponent };

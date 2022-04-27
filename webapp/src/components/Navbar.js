@@ -2,9 +2,13 @@ import "../sass/navBar.scss";
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa";
 import { useContextApp } from "../context/contextApp";
 //import Logo from "./Logo"
+
+//using react icons in nav bar next to the navigation links
 import { useState } from "react";
 const Navbar = () => {
+  //toggling small side bar for smaller screens
   const [showLogout, setShowLogout] = useState(false);
+
   const { toggleSidebar, logoutUser, user } = useContextApp();
   return (
     <div className="navCom">

@@ -3,6 +3,7 @@ import { useContextApp } from "../context/contextApp";
 import NavLinks from "./NavLinks";
 import Logo from "../components/Logo";
 
+//this is the big side bar which contains the navigation links to different pages of the application
 const BigSidebar = () => {
   const { showSideBar, toggleSidebar } = useContextApp();
   return (

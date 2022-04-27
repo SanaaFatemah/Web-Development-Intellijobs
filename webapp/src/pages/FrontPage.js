@@ -2,7 +2,7 @@ import "../sass/FrontPage.scss";
 import React from "react";
 
 import { Link } from "react-router-dom";
-
+//to display the landing page of the website
 function FrontPage() {
   return (
     <div className="container page">

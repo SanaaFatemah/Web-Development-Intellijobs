@@ -6,8 +6,11 @@ import {
   Profile,
   Stats,
   SharedLayout,
-  SchedulerComponent
+  SchedulerComponent,
 } from "./pages/dashboard";
+
+//setting up the routes for different pages in the application
+
 function App() {
   return (
     <BrowserRouter>

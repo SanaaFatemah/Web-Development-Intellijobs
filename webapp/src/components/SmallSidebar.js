@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import { useContextApp } from "../context/contextApp";
 import NavLinks from "./NavLinks";
 
+//setting up the small side bar for making the screen responsive when the size of the screen is reduced
 const SmallSidebar = () => {
   const { showSidebar, toggleSidebar } = useContextApp();
   return (
