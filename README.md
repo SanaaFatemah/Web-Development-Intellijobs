@@ -1,6 +1,6 @@
 # IntelliJobs
 
-##INFO6150 - Web design and User Experience - Final Project
+## INFO6150 - Web design and User Experience - Final Project
 
 <table>
     <thead>
@@ -12,27 +12,27 @@
     <tbody>
          <tr>
             <td>Achintya Singh</td>
-            <td>---------- </td>
+            <td>001562820</td>
         </tr>
           <tr>
             <td>Ashish Kumar Ramesh</td>
-            <td>---------- </td>
+            <td>001556253</td>
         </tr>
           <tr>
             <td>Raksha Kagadalu Raju</td>
-            <td>---------- </td>
+            <td>002920092</td>
         </tr>
          </tr>
           <tr>
             <td>Sanaa Rupani</td>
-            <td>---------- </td>
+            <td>001567616</td>
         </tr>
     </tbody>
 </table>
 
 ### 1. Objective
 
-To create an application that provides job applicants a canvas where they can track the statuses of all their job applications. it will give the user an analytical view of the status of their job applications by displaying the statistics. The applicant will have a search page where he can view all his applications regardless fo the status. The applicant can add a new job that he has applied to by filling out details such as Job position, Company name, Job location etc.
+To create an application that provides job applicants a canvas where they can track the statuses of all their job applications. It will give the user an analytical view of the status of their job applications by displaying the statistics. The applicant will have a search page where he can view all his applications regardless fo the status. The applicant can add a new job that he has applied to by filling out details such as Job position, Company name, Job location etc.
 The main aim of building this application is to give them a platform where they can easily update and track their job applications during the job search process.
 
 ### 2. User stories
@@ -52,8 +52,6 @@ The main aim of building this application is to give them a platform where they 
 ### 3. Domain Diagram
 
 ![Domain Diagram](DomainDiagram.png?raw=true "Page view")
-
-final-project-webdevs/DomainDiagram.png
 
 ### 4.Technology Used
 
@@ -96,4 +94,13 @@ $ npm install
 $ node server
 ```
 
-<b>Note</b>: Please find detailed README's in server and webapp for more information
+- Add `.env` file inside server folder with below details
+
+```
+  PORT
+  MONGO_URL
+  JWT_ENCKEY
+  JWT_EXPIRY
+```
+
+
