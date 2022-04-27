@@ -4,6 +4,8 @@ import { MdQueryStats } from "react-icons/md";
 import { FaWpforms } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 
+//adding the link component with url to trverse through different pages in the application
+
 const links = [
   { id: 1, text: "Profile", path: "profile", icon: <ImProfile /> },
   { id: 2, text: "Manage Jobs", path: "add-job", icon: <FaWpforms /> },

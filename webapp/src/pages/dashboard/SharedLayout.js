@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import "../../sass/SharedLayou.scss";
-
+//setting up nav bar and giving stucture to the nested pages
 import { Navbar, BigSidebar, SmallSidebar } from "../../components";
 const SharedLayout = () => {
   return (

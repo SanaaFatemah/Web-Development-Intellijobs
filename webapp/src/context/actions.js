@@ -5,67 +5,67 @@ export const SHOW_ALERT = "DISPLAY_ALERT";
 export const HIDE_ALERT = "HIDE_ALERT";
 
 //Actions for user registeration page
-export const REGISTER_USER_START = "REGISTER_USER_START";
-export const REGISTER_USER_SUCCESSFUL = "REGISTER_USER_SUCCESSFUL";
-export const REGISTER_USER_ERROR = "REGISTER_USER_ERROR";
+export const USER_REGISTER_START = "USER_REGISTER_START";
+export const USER_REGISTER_SUCCESSFUL = "USER_REGISTER_SUCCESSFUL";
+export const USER_REGISTER_ERROR = "USER_REGISTER_ERROR";
 
 //Actions for login registeration page
-export const LOGIN_USER_START = "LOGIN_USER_START";
-export const LOGIN_USER_SUCCESSFUL = "LOGIN_USER_SUCCESSFUL";
-export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR";
+export const USER_LOGIN_START = "USER_LOGIN_START";
+export const USER_LOGIN_SUCCESSFUL = "USER_LOGIN_SUCCESSFUL";
+export const USER_LOGIN_ERROR = "USER_LOGIN_ERROR";
 
 //Actions for profile page
-export const SETUP_USER_START = "SETUP_USER_START";
-export const SETUP_USER_SUCCESSFUL = "SETUP_USER_SUCCESSFUL";
-export const SETUP_USER_ERROR = "SETUP_USER_ERROR";
+export const USER_SETUP_START = "USER_SETUP_START";
+export const USER_SETUP_SUCCESSFUL = "USER_SETUP_SUCCESSFUL";
+export const USER_SETUP_ERROR = "USER_SETUP_ERROR";
 
 //Actions for sidebar
-export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
-export const LOGOUT_USER = "LOGOUT_USER";
+export const SIDEBAR_TOGGLE = "SIDEBAR_TOGGLE";
+export const USER_LOGOUT = "USER_LOGOUT";
 
 //Actions for Update User Page
-export const UPDATE_USER_START = "UPDATE_USER_BEGIN";
-export const UPDATE_USER_SUCCESSFULL = "UPDATE_USER_SUCCESS";
-export const UPDATE_USER_ERROR = "UPDATE_USER_ERROR";
+export const USER_UPDATE_START = "USER_UPDATE_BEGIN";
+export const USER_UPDATE_SUCCESSFULL = "USER_UPDATE_SUCCESS";
+export const USER_UPDATE_ERROR = "USER_UPDATE_ERROR";
 
 //Action to handle Change for Row Slect Options
 export const HANDLE_CHANGE = "HANDLE_CHANGE";
 
 //Action to handle Change to clear values
-export const CLEAR_VALUES = "CLEAR_VALUES";
+export const VALUES_CLEAR = "VALUES_CLEAR";
 
 //Actions for CreateJob
-export const CREATE_JOB_BEGIN = "CREATE_JOB_BEGIN";
-export const CREATE_JOB_SUCCESS = "CREATE_JOB_SUCCESS";
-export const CREATE_JOB_ERROR = "CREATE_JOB_ERROR";
+export const JOB_CREATE_BEGIN = "JOB_CREATE_BEGIN";
+export const JOB_CREATE_SUCCESS = "JOB_CREATE_SUCCESS";
+export const JOB_CREATE_ERROR = "JOB_CREATE_ERROR";
 
 //Actions for GETJOBS
-export const GET_JOBS_BEGIN = "GET_JOBS_BEGIN";
-export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
+export const JOBS_GET_BEGIN = "JOBS_GET_BEGIN";
+export const JOBS_GET_SUCCESS = "JOBS_GET_SUCCESS";
 
 //Actions for GETJOBS
-export const GET_ALL_JOBS_BEGIN = "GET_JOBS_BEGIN";
-export const GET_ALL_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
+export const JOBS_GET_ALL_BEGIN = "JOBS_GET_BEGIN";
+export const JOBS_GET_ALL_SUCCESS = "JOBS_GET_SUCCESS";
 
 //Actions to add functionality to  EDITJOBS
-export const SET_EDIT_JOB = "SET_EDIT_JOB";
+export const SET_JOB_EDIT = "SET_JOB_EDIT";
 
 //Actions to add functionality to  DELETEJOBS
-export const DELETE_JOB_BEGIN = "DELETE_JOB_BEGIN";
+export const JOB_DELETE_BEGIN = "JOB_DELETE_BEGIN";
 
 //Actions for the functionlity to implement EditJob
-export const EDIT_JOB_BEGIN = "EDIT_JOB_BEGIN";
-export const EDIT_JOB_SUCCESS = "EDIT_JOB_SUCCESS";
-export const EDIT_JOB_ERROR = "EDIT_JOB_ERROR";
+export const JOB_EDIT_BEGIN = "JOB_EDIT_BEGIN";
+export const JOB_EDIT_SUCCESS = "JOB_EDIT_SUCCESS";
+export const JOB_EDIT_ERROR = "JOB_EDIT_ERROR";
 
-export const SHOW_STATS_BEGIN = "SHOW_STATS_BEGIN";
-export const SHOW_STATS_SUCCESS = "SHOW_STATS_SUCCESS";
+export const STATS_SHOW_BEGIN = "STATS_SHOW_BEGIN";
+export const STATS_SHOW_SUCCESS = "STATS_SHOW_SUCCESS";
 
 //Actions for clear button on job search page
-export const CLEAR_SEARCH = "CLEAR_SEARCH";
+export const SEARCH_CLEAR = "SEARCH_CLEAR";
 
 //Actions for changePage
-export const CHANGE_PAGE = "CHANGE_PAGE";
+export const PAGE_CHANGE = "PAGE_CHANGE";
 
 //Action to add calendar event
-export const ADD_EVENT = "ADD_EVENT";
+export const EVENT_ADD = "EVENT_ADD";

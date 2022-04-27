@@ -6,6 +6,9 @@ import { useContextApp } from "../context/contextApp";
 import { useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com";
 
+//consists of a form with user registeration inputs
+
+//setting up the inistial state
 const State = {
   name: "",
   email: "",
@@ -15,6 +18,7 @@ const State = {
 };
 
 const RegisterUser = () => {
+  //get user state and invoke the use navigator hook
   const navigate = useNavigate();
   const [values, setValues] = useState(State);
   const {
@@ -28,6 +32,7 @@ const RegisterUser = () => {
   } = useContextApp();
   //console.log(state);
 
+  //to toggle between login and register form
   const toggleRegister = () => {
     setValues({ ...values, isaMember: !values.isaMember });
   };
@@ -43,6 +48,7 @@ const RegisterUser = () => {
     e.preventDefault();
     const { name, email, password, isaMember } = values;
     // console.log(e.target);
+
     //adding validation check for the input fields before submit
     if (
       !values.email ||
@@ -69,15 +75,25 @@ const RegisterUser = () => {
 
       let reply_to = e.target[1].value;
       var contactParams = {
-        reply_to: reply_to
-      }
+        reply_to: reply_to,
+      };
 
-      emailjs.send('service_07228zq', 'template_g23o757', contactParams, '9HB12qcHBbdIggQe6')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
+      //sending an email to user as soon as they register
+      emailjs
+        .send(
+          "service_07228zq",
+          "template_g23o757",
+          contactParams,
+          "9HB12qcHBbdIggQe6"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
     }
     //console.log(values);
   };
@@ -85,7 +101,7 @@ const RegisterUser = () => {
     if (user) {
       setTimeout(() => {
         navigate("/");
-      }, 3000);
+      }, 2000);
     }
   }, [user, navigate]);
 
@@ -137,7 +153,6 @@ const RegisterUser = () => {
       </form>
       <h1></h1>
     </div>
-    
   );
 };
 
