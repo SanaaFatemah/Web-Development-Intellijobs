@@ -1,5 +1,6 @@
 import Wrapper from "../assets/wrappers/StatItem";
 
+//styling the cards of the total job count on based on different job types
 const StatItem = ({ count, title, icon, color, bcg }) => {
   return (
     <Wrapper color={color} bcg={bcg}>

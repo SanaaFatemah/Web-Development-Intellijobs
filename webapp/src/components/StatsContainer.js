@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import "../sass/StatsContainer.scss";
 
+//creating a container which dispays both job count cards and charts when user clicks on Job analysis page
 const StatsContainer = () => {
   const { stats } = useContextApp();
 

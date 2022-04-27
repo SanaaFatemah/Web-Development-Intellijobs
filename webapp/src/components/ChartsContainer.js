@@ -4,6 +4,7 @@ import AreaChart from "./AreaChart";
 import { useContextApp } from "../context/contextApp";
 import "../sass/ChartsDiv.scss";
 
+//creating a container for displaying the job statistics and chart for the user
 const ChartsContainer = () => {
   const [barChart, setBarChart] = useState(true);
   const { monthlyApplications: data } = useContextApp();

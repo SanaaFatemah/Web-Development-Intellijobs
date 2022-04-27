@@ -59,7 +59,7 @@ const AddJob = () => {
             handleChange={handleJobInput}
             placeholder="Enter a job role"
           />
-          {/* company */}
+          {/* html element company */}
           <FormInput
             type="text"
             name="company"
@@ -67,7 +67,7 @@ const AddJob = () => {
             handleChange={handleJobInput}
             placeholder="Enter the company"
           />
-          {/* location */}
+          {/* html element for location */}
           <FormInput
             type="text"
             labelText="location"
@@ -76,7 +76,7 @@ const AddJob = () => {
             handleChange={handleJobInput}
             placeholder="Enter the job location"
           />
-          {/* job status */}
+          {/* html element for job status */}
           <FormRowSelect
             name="status"
             value={status}
@@ -84,7 +84,7 @@ const AddJob = () => {
             list={statusOptions}
             placeholder="Enter the job status"
           />
-          {/* job type */}
+          {/* html element for job type */}
           <FormRowSelect
             name="jobType"
             labelText="Job type"
@@ -98,7 +98,7 @@ const AddJob = () => {
             labelText="Interview Date"
             handleChange={handleJobInput}
           />
-          {/* btn container */}
+          {/* html element for btn container */}
           <div className="btn-container">
             <button
               className="btn btn-block submit-btn"

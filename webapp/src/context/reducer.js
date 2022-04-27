@@ -63,6 +63,7 @@ const reducer = (state, action) => {
     return { ...state, isLoading: true };
   }
 
+  //action method to perform when user registeration in is success
   if (action.type === USER_REGISTER_SUCCESSFUL) {
     return {
       ...state,
@@ -77,6 +78,7 @@ const reducer = (state, action) => {
     };
   }
 
+  //action method to perform when user registeration in is not successfull
   if (action.type === USER_REGISTER_ERROR) {
     return {
       ...state,
@@ -87,10 +89,12 @@ const reducer = (state, action) => {
     };
   }
 
+  //action method to perform when user logs is in process
   if (action.type === USER_LOGIN_START) {
     return { ...state, isLoading: true };
   }
 
+  //action method to perform when user logs in is successfull
   if (action.type === USER_LOGIN_SUCCESSFUL) {
     return {
       ...state,
@@ -105,6 +109,7 @@ const reducer = (state, action) => {
     };
   }
 
+  //action method to perform when user logs in is notsuccessfull
   if (action.type === USER_LOGIN_ERROR) {
     return {
       ...state,
@@ -115,10 +120,12 @@ const reducer = (state, action) => {
     };
   }
 
+  //action method to perform when user logs starts to update his profile
   if (action.type === USER_SETUP_START) {
     return { ...state, isLoading: true };
   }
 
+  //action method to perform when user profile is set up successfully
   if (action.type === USER_SETUP_SUCCESSFUL) {
     return {
       ...state,
@@ -133,6 +140,7 @@ const reducer = (state, action) => {
     };
   }
 
+  //action method to perform when user profile is set up is not successfull
   if (action.type === USER_SETUP_ERROR) {
     return {
       ...State,
@@ -142,12 +150,15 @@ const reducer = (state, action) => {
       alertMsg: action.payload.msg,
     };
   }
+
   if (action.type === SIDEBAR_TOGGLE) {
     return {
       ...state,
       showSidebar: !state.showSidebar,
     };
   }
+
+  //action method to perform when user user logs out
   if (action.type === USER_LOGOUT) {
     return {
       ...state,
@@ -158,10 +169,12 @@ const reducer = (state, action) => {
     };
   }
 
+  //action method to perform when user starts to update his profile
   if (action.type === USER_UPDATE_START) {
     return { ...state, isLoading: true };
   }
 
+  //action method to perform when user  updated his profile
   if (action.type === USER_UPDATE_SUCCESSFULL) {
     return {
       ...state,
