@@ -31,7 +31,7 @@ const JobSchema = new mongoose.Schema(
     },
     jobLocation: {
       type: String,
-      default: "my city",
+      default: "my",
       required: true,
     },
     createdBy: {

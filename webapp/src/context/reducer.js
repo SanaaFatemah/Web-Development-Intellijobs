@@ -100,7 +100,7 @@ const reducer = (state, action) => {
       jobLocation: action.payload.location,
       displayAlertMsg: true,
       alertType: "success",
-      alertMsg: "Login successful! Redirecting...",
+      alertMsg: "Login successful! Please wait...",
     };
   }
 
@@ -186,7 +186,7 @@ const reducer = (state, action) => {
   if (action.type === HANDLE_CHANGE) {
     return {
       ...state,
-      page:1,
+      page: 1,
       [action.payload.name]: action.payload.value,
     };
   }
@@ -212,22 +212,22 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
-      showAlert: true,
+      displayAlertMsg: true,
       alertType: "success",
-      alertText: "New Job Created!",
+      alertMsg: "New Job Created!",
     };
   }
   if (action.type === CREATE_JOB_ERROR) {
     return {
       ...state,
       isLoading: false,
-      showAlert: true,
+      displayAlertMsg: true,
       alertType: "danger",
-      alertText: action.payload.msg,
+      alertMsg: action.payload.msg,
     };
   }
   if (action.type === GET_JOBS_BEGIN) {
-    return { ...state, isLoading: true, showAlert: false };
+    return { ...state, isLoading: true, displayAlertMsg: false };
   }
   if (action.type === GET_JOBS_SUCCESS) {
     return {
@@ -279,9 +279,9 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
-      showAlert: true,
+      displayAlertMsg: true,
       alertType: "success",
-      alertText: "Job Updated!",
+      alertMsg: "Job Updated!",
     };
   }
   if (action.type === EDIT_JOB_ERROR) {
@@ -297,7 +297,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: true,
-      showAlert: false,
+      displayAlertMsg: false,
     };
   }
 
@@ -320,9 +320,8 @@ const reducer = (state, action) => {
     };
   }
 
-  if(action.type===CHANGE_PAGE)
-  {
-    return {...state, page:action.payload.page}
+  if (action.type === CHANGE_PAGE) {
+    return { ...state, page: action.payload.page };
   }
 
   if(action.type===ADD_EVENT)

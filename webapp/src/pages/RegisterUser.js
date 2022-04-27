@@ -1,8 +1,10 @@
+import "../sass/RegistrationPage.scss";
 import React from "react";
 import { useState, useEffect } from "react";
 import { AlertMessage, FormInput } from "../components";
 import { useContextApp } from "../context/contextApp";
 import { useNavigate } from "react-router-dom";
+import emailjs from "emailjs-com";
 
 const State = {
   name: "",
@@ -50,7 +52,6 @@ const RegisterUser = () => {
       showAlert();
       return;
     }
-
     const currentUser = { name, password, email };
     if (isaMember) {
       setupUser({
@@ -64,6 +65,19 @@ const RegisterUser = () => {
         endPoint: "register",
         alertMsg: "User Created! Redirecting...",
       });
+      e.preventDefault();
+
+      let reply_to = e.target[1].value;
+      var contactParams = {
+        reply_to: reply_to
+      }
+
+      emailjs.send('service_07228zq', 'template_g23o757', contactParams, '9HB12qcHBbdIggQe6')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
     }
     //console.log(values);
   };
@@ -76,11 +90,16 @@ const RegisterUser = () => {
   }, [user, navigate]);
 
   return (
-    <div>
+    <div className="regCom">
       {/*Form HTML element for user Login or Registration */}
-      <form className="form" onSubmit={fnSubmit}>
+
+      <h1>
+        Intelli<b>Jobs</b>
+      </h1>
+      <form className="formReg" onSubmit={fnSubmit}>
         <h3>{values.isaMember ? "Log-in" : "Register Now"}</h3>
         {displayAlertMsg && <AlertMessage></AlertMessage>}
+
         {/* Form Name input field HTML elements displayed only for non members */}
         {!values.isaMember && (
           <FormInput
@@ -116,7 +135,9 @@ const RegisterUser = () => {
           </button>
         </p>
       </form>
+      <h1></h1>
     </div>
+    
   );
 };
 

@@ -1,10 +1,16 @@
 import React from "react";
+import img from "../assets/images/images.png";
+import "../sass/ErrorPage.scss";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <div>
-      <h1>ErrorPage</h1>
+    <div className="errorCom">
+      <h1>
+        <b>ErrorPage</b>
+      </h1>
+      <p>Looks like your search URL is incorrect!</p>
+      <img src={img} alt="error" />
       <Link to="/">BackHome</Link>
     </div>
   );

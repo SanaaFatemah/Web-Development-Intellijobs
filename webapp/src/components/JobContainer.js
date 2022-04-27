@@ -2,7 +2,7 @@ import { useContextApp } from "../context/contextApp";
 import { useEffect } from "react";
 import Loading from "./Loading";
 import Job from "./Job";
-import Wrapper from "../assets/wrappers/JobsContainer";
+import "../sass/JobContainer.scss";
 import PageBtnContainer from "./PageBtnContainer";
 
 const JobsContainer = () => {
@@ -16,13 +16,12 @@ const JobsContainer = () => {
     searchStatus,
     searchType,
     sort,
-    numOfPages
+    numOfPages,
   } = useContextApp();
 
   useEffect(() => {
     getJobs();
-        // eslint-disable-next-line
-
+    // eslint-disable-next-line
   }, [page, search, searchStatus, searchType, sort]);
   if (isLoading) {
     return <Loading center />;
@@ -30,14 +29,14 @@ const JobsContainer = () => {
 
   if (jobs.length === 0) {
     return (
-      <Wrapper>
+      <div className="jobContaier">
         <h2>No Jobs to Display...</h2>
-      </Wrapper>
+      </div>
     );
   }
 
   return (
-    <Wrapper>
+    <div className="jobContaier">
       <h5>
         {totalJobs} job{jobs.length > 1 && "s"} found
       </h5>
@@ -46,9 +45,9 @@ const JobsContainer = () => {
           return <Job key={job._id} {...job} />;
         })}
       </div>
-      {numOfPages > 1 && <PageBtnContainer/>}
+      {numOfPages > 1 && <PageBtnContainer />}
       {/*pagination buttons*/}
-    </Wrapper>
+    </div>
   );
 };
 

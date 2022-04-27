@@ -282,8 +282,8 @@ const ProviderApp = ({ children }) => {
         type: CREATE_JOB_ERROR,
         payload: { msg: error.response.data.msg },
       });
-      hideAlert();
     }
+    hideAlert();
   };
   const getJobs = async () => {
     const { page, search, searchStatus, searchType, sort } = state;

@@ -1,6 +1,6 @@
 import { FormInput, AlertMessage, FormRowSelect } from "../../components";
 import { useContextApp } from "../../context/contextApp";
-import Wrapper from "../../assets/wrappers/DashboardFormPage";
+import "../../sass/DashboardPage.scss";
 
 const AddJob = () => {
   const {
@@ -26,10 +26,10 @@ const AddJob = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-     if (!position || !company || !jobLocation) {
-       showAlert();
-       return;
-     }
+    // if (!position || !company || !jobLocation) {
+    //   showAlert();
+    //   return;
+    // }
     if (isEditing) {
       editJob();
       return;
@@ -44,10 +44,10 @@ const AddJob = () => {
   };
 
   return (
-    <Wrapper>
+    <div className="jobCommon">
       <form className="form">
         <h3>{isEditing ? "Edit Job Status" : "Add New Job"}</h3>
-        {displayAlert && <AlertMessage />}
+        {showAlert && <AlertMessage />}
 
         {/*HTML element for position field */}
         <div className="form-center">
@@ -57,6 +57,7 @@ const AddJob = () => {
             labelText="Job Role"
             value={position}
             handleChange={handleJobInput}
+            placeholder = "Enter a job role"
           />
           {/* company */}
           <FormInput
@@ -64,6 +65,7 @@ const AddJob = () => {
             name="company"
             value={company}
             handleChange={handleJobInput}
+            placeholder = "Enter the company"
           />
           {/* location */}
           <FormInput
@@ -72,6 +74,7 @@ const AddJob = () => {
             name="jobLocation"
             value={jobLocation}
             handleChange={handleJobInput}
+            placeholder = "Enter the job location"
           />
           {/* job status */}
           <FormRowSelect
@@ -79,6 +82,7 @@ const AddJob = () => {
             value={status}
             handleChange={handleJobInput}
             list={statusOptions}
+            placeholder = "Enter the job status"
           />
           {/* job type */}
           <FormRowSelect
@@ -120,7 +124,7 @@ handleChange={handleChange}
           </div>
         </div>
       </form>
-    </Wrapper>
+    </div>
   );
 };
 

@@ -2,7 +2,7 @@ import moment from "moment";
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useContextApp } from "../context/contextApp";
-import Wrapper from "../assets/wrappers/Job";
+import "../sass/Jobs.scss";
 import JobInfo from "./JobInfo";
 
 const Job = ({
@@ -23,7 +23,7 @@ const Job = ({
   //console.log(jobType);
 
   return (
-    <Wrapper>
+    <div className="jCommon">
       <header>
         <div className="main-icon">{company.charAt(0)}</div>
         <div className="info">
@@ -67,7 +67,7 @@ const Job = ({
           </div>
         </footer>
       </div>
-    </Wrapper>
+    </div>
   );
 };
 

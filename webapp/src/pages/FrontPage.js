@@ -1,5 +1,6 @@
+import "../sass/FrontPage.scss";
 import React from "react";
-import "./sass/FrontPage.scss";
+
 import { Link } from "react-router-dom";
 
 function FrontPage() {
