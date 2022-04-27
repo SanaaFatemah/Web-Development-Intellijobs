@@ -43,6 +43,10 @@ export const CREATE_JOB_ERROR = "CREATE_JOB_ERROR";
 export const GET_JOBS_BEGIN = "GET_JOBS_BEGIN";
 export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
 
+//Actions for GETJOBS
+export const GET_ALL_JOBS_BEGIN = "GET_JOBS_BEGIN";
+export const GET_ALL_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
+
 //Actions to add functionality to  EDITJOBS
 export const SET_EDIT_JOB = "SET_EDIT_JOB";
 
@@ -62,3 +66,6 @@ export const CLEAR_SEARCH = "CLEAR_SEARCH";
 
 //Actions for changePage
 export const CHANGE_PAGE = "CHANGE_PAGE";
+
+//Action to add calendar event
+export const ADD_EVENT = "ADD_EVENT";

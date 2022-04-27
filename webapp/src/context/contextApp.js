@@ -34,6 +34,9 @@ import {
   SHOW_STATS_SUCCESS,
   CLEAR_SEARCH,
   CHANGE_PAGE,
+  ADD_EVENT,
+  GET_ALL_JOBS_BEGIN,
+  GET_ALL_JOBS_SUCCESS
 } from "./actions";
 
 // set as default
@@ -75,6 +78,7 @@ const State = {
   searchType: "All",
   sort: "Latest",
   sortOptions: ["Latest", "oldest", "a-z", "z-a"],
+  dateOfInterview: ""
 };
 
 const ContextApp = React.createContext();
@@ -261,13 +265,14 @@ const ProviderApp = ({ children }) => {
   const createJob = async () => {
     dispatch({ type: CREATE_JOB_BEGIN });
     try {
-      const { position, company, jobLocation, jobType, status } = state;
+      const { position, company, jobLocation, jobType, status, dateOfInterview } = state;
       await authFetch.post("/jobs", {
         position,
         company,
         jobLocation,
         jobType,
         status,
+        dateOfInterview
       });
       dispatch({ type: CREATE_JOB_SUCCESS });
       dispatch({ type: CLEAR_VALUES });
@@ -306,6 +311,28 @@ const ProviderApp = ({ children }) => {
     hideAlert();
   };
 
+  const getAllJobs = async () => {
+    const { page, search, searchStatus, searchType, sort } = state;
+    //constructing the url with search query parameters
+    let url = `/jobs/cal`;
+
+    dispatch({ type: GET_ALL_JOBS_BEGIN });
+    try {
+      const { data } = await authFetch(url);
+      const { jobs, totalJobs } = data;
+      dispatch({
+        type: GET_ALL_JOBS_SUCCESS,
+        payload: {
+          jobs,
+          totalJobs,
+        },
+      });
+    } catch (error) {
+      logoutUser()
+    }
+    hideAlert();
+  };
+
   // useEffect(() => {
   // getJobs()
   // }, [])
@@ -318,13 +345,14 @@ const ProviderApp = ({ children }) => {
     dispatch({ type: EDIT_JOB_BEGIN });
 
     try {
-      const { position, company, jobLocation, jobType, status } = state;
+      const { position, company, jobLocation, jobType, status, dateOfInterview } = state;
       await authFetch.put(`/jobs/${state.editJobId}`, {
         company,
         position,
         jobLocation,
         jobType,
         status,
+        dateOfInterview
       });
       dispatch({ type: EDIT_JOB_SUCCESS });
       dispatch({ type: CLEAR_VALUES });
@@ -372,6 +400,10 @@ const ProviderApp = ({ children }) => {
     dispatch({type:CHANGE_PAGE,payload:{ page }})
   }
 
+  const addEvent = (company, position, date) => {
+    dispatch({type:ADD_EVENT,payload:{ company, position, date }})
+  }
+
   return (
     <ContextApp.Provider
       value={{
@@ -393,6 +425,8 @@ const ProviderApp = ({ children }) => {
         showStats,
         clearSearch,
         changePage,
+        addEvent,
+        getAllJobs
       }}
     >
       {children}

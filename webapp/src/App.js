@@ -6,6 +6,7 @@ import {
   Profile,
   Stats,
   SharedLayout,
+  SchedulerComponent
 } from "./pages/dashboard";
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="add-job" element={<AddJob />} />
           <Route path="all-jobs" element={<AllJob />} />
           <Route index element={<Stats />} />
+          <Route path="scheduler" element={<SchedulerComponent />} />
         </Route>
         <Route path="/RegisterUser" element={<RegisterUser></RegisterUser>} />
         <Route path="/FrontPage" element={<FrontPage></FrontPage>} />

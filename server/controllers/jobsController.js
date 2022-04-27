@@ -82,6 +82,68 @@ const getAllJobs = async (req, res) => {
   res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages: numOfPages });
 };
 
+const getCalJobs = async (req, res) => {
+  const { status, jobType, sort, search } = req.query;
+
+  const queryObject = {
+    createdBy: req.user.userId,
+  };
+
+  //add stuff based on condition
+
+  if (status && status !== "All") {
+    queryObject.status = status;
+  }
+
+  if (jobType && jobType !== "All") {
+    queryObject.jobType = jobType;
+  }
+
+  if (search) {
+    queryObject.position = { $regex: search, $options: "i" };
+  }
+
+  //No await
+  //console.log(queryObject);
+  let result = Job.find(queryObject);
+
+  //chain sort condition
+
+  if (sort === "Latest") {
+    result = result.sort("-createdAt");
+  }
+
+  if (sort === "oldest") {
+    result = result.sort("createdAt");
+  }
+
+  if (sort === "a-z") {
+    result = result.sort("position");
+  }
+
+  if (sort === "z-a") {
+    result = result.sort("-position");
+  }
+
+  //using the limit and skip from mongoose to limit the number of jobs displayed
+
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 100;
+  const skip = (page - 1) * limit;
+  result = result.skip(skip).limit(limit);
+
+  const jobs = await result;
+
+  //to count the number of total jobs in all pages for a specific query search
+  const totalJobs = await Job.countDocuments(queryObject);
+  //to count the number of pages
+  const numOfPages = Math.ceil(totalJobs / limit); //ceil to round up
+
+  res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages: numOfPages });
+};
+
+
+
 const updateJob = async (req, res) => {
   const { id: jobId } = req.params;
   const { company, position } = req.body;
@@ -181,4 +243,4 @@ const showStats = async (req, res) => {
   res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
 };
 
-export { createJob, deleteJob, getAllJobs, updateJob, showStats };
+export { createJob, deleteJob, getAllJobs, updateJob, showStats, getCalJobs };

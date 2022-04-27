@@ -19,15 +19,17 @@ const AddJob = () => {
     clearValues,
     createJob,
     editJob,
+    dateOfInterview,
+    addEvent
   } = useContextApp();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (!position || !company || !jobLocation) {
-    //   displayAlert();
-    //   return;
-    // }
+     if (!position || !company || !jobLocation) {
+       showAlert();
+       return;
+     }
     if (isEditing) {
       editJob();
       return;
@@ -86,6 +88,15 @@ const AddJob = () => {
             handleChange={handleJobInput}
             list={jobTypeOptions}
           />
+          <FormInput
+
+type="date"
+
+name="date"
+
+handleChange={handleChange}
+
+/>
           {/* btn container */}
           <div className="btn-container">
             <button

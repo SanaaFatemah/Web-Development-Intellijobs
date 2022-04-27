@@ -31,6 +31,9 @@ import {
   SHOW_STATS_SUCCESS,
   CLEAR_SEARCH,
   CHANGE_PAGE,
+  ADD_EVENT,
+  GET_ALL_JOBS_BEGIN,
+  GET_ALL_JOBS_SUCCESS
 } from "./actions";
 
 import { State } from "./contextApp";
@@ -235,6 +238,17 @@ const reducer = (state, action) => {
       numOfPages: action.payload.numOfPages,
     };
   }
+  if (action.type === GET_ALL_JOBS_BEGIN) {
+    return { ...state, isLoading: true, showAlert: false };
+  }
+  if (action.type === GET_ALL_JOBS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      jobs: action.payload.jobs,
+      totalJobs: action.payload.totalJobs,
+    };
+  }
   if (action.type === SET_EDIT_JOB) {
     const job = state.jobs.find((job) => job._id === action.payload.id);
     const { _id, position, company, jobLocation, jobType, status } = job;
@@ -247,6 +261,7 @@ const reducer = (state, action) => {
       jobLocation,
       jobType,
       status,
+      
     };
   }
 
@@ -308,6 +323,18 @@ const reducer = (state, action) => {
   if(action.type===CHANGE_PAGE)
   {
     return {...state, page:action.payload.page}
+  }
+
+  if(action.type===ADD_EVENT)
+  {
+    const job = state.jobs.find((job) => job._id === action.payload.id);
+    const { _id, position, company, dateOfInterview, } = job;
+    
+    return {...state,
+    company,
+    position,
+    dateOfInterview
+    }
   }
 
   throw new Error(`not a valid action :${action.type}`);

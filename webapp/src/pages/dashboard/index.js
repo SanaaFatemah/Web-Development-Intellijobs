@@ -1,9 +1,9 @@
 import AddJob from "./AddJob";
 import AllJob from "./AllJobs";
 import Profile from "./Profile";
+import SchedulerComponent from "./SchedulerComponent";
 import SharedLayout from "./SharedLayout";
 import Stats from "./Stats";
-
 
 
 export{
@@ -11,5 +11,6 @@ export{
     AddJob,
     Profile,
     Stats,
-    SharedLayout
+    SharedLayout,
+    SchedulerComponent
 }
