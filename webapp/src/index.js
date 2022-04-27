@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.scss";
+import "./sass/index.scss";
 import App from "./App";
 import "normalize.css";
 import { ProviderApp } from "./context/contextApp";
