@@ -47,7 +47,7 @@ The main aim of building this application is to give them a platform where they 
 - As a user, I want to view/update my profile.
 - As a user, I want to edit my job applications.
 - As a user, I want to delete my job applications.
-- As a user, I want to view a calendar with my interview scedules.
+- As a user, I want to view a calendar with my interview schedule.
 
 ### 3. Domain Diagram
 
