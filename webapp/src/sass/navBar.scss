@@ -29,6 +29,7 @@
   background: var(--grey-900);
   .btn-container {
     position: relative;
+    margin-bottom: 4em;
   }
   .btn {
     display: flex;
@@ -41,7 +42,7 @@
 
   .dropdown {
     position: absolute;
-    top: 40px;
+    //top: 40px;
     left: 0;
     width: 100%;
     background: var(---grey-700);
@@ -52,15 +53,18 @@
     border-radius: var(--borderRadius);
   }
   .show-dropdown {
-    visibility: visible;
+    visibility:inherit;
+    background-color: white;
+    
   }
   .dropdown-btn {
-    background: transparent;
+    background: white;
     border-color: transparent;
     color: var(---grey-800);
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
     cursor: pointer;
+    color: Black;
   }
   .logo-text {
     display: none;

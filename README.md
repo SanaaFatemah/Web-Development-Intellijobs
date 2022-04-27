@@ -103,4 +103,4 @@ $ node server
   JWT_EXPIRY
 ```
 
-<b>Note</b>: Please find detailed README's in server and webapp for more information
+
