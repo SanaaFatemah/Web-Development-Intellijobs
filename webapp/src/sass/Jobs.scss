@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+//@import "./FrontPage.scss";
 
-const Wrapper = styled.article`
+.jCommon {
   background: var(--white);
   border-radius: var(--borderRadius);
   display: grid;
@@ -102,9 +102,7 @@ const Wrapper = styled.article`
     color: var(--red-dark);
     background: var(--red-light);
   }
-  &:hover .actions {
+  .delete-btn:hover .actions {
     visibility: visible;
   }
-`
-
-export default Wrapper
+}

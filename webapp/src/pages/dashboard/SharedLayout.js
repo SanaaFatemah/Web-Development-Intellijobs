@@ -1,20 +1,21 @@
 import { Outlet, Link } from "react-router-dom";
-import Wrapper from "../../assets/wrappers/SharedLayout";
+import "../../sass/SharedLayou.scss";
+//setting up nav bar and giving stucture to the nested pages
 import { Navbar, BigSidebar, SmallSidebar } from "../../components";
+
+//setting up big side bar for full screen , small side bar for smaller screens and nav bar to navigate to diff pages
 const SharedLayout = () => {
   return (
-    <Wrapper>
-      <main className="dashboard">
-        <SmallSidebar></SmallSidebar>
-        <BigSidebar></BigSidebar>
-        <div>
-          <Navbar></Navbar>
-          <div className="dashboard-page">
-            <Outlet></Outlet>
-          </div>
+    <main className="dashboard">
+      <SmallSidebar></SmallSidebar>
+      <BigSidebar></BigSidebar>
+      <div>
+        <Navbar></Navbar>
+        <div className="dashboard-page">
+          <Outlet></Outlet>
         </div>
-      </main>
-    </Wrapper>
+      </div>
+    </main>
   );
 };
 

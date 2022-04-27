@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+//Setting up the schema for the application
 const JobSchema = new mongoose.Schema(
   {
     company: {
@@ -14,7 +14,13 @@ const JobSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Interview Scheduled", "Rejected", "Awaiting Response","Accepted"],
+      enum: [
+        "Interview Scheduled",
+        "Rejected",
+        "Awaiting Response",
+        "Accepted",
+        
+      ],
       default: "Awaiting Response",
     },
 
@@ -25,7 +31,7 @@ const JobSchema = new mongoose.Schema(
     },
     jobLocation: {
       type: String,
-      default: "my city",
+      default: "my",
       required: true,
     },
     createdBy: {
@@ -33,6 +39,10 @@ const JobSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "Please provide user"],
     },
+    dateOfInterview: {
+      type: Date,
+      default: null,
+    }
   },
   { timestamps: true }
 );

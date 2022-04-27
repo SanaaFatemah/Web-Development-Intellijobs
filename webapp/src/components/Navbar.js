@@ -1,13 +1,17 @@
-import Wrapper from "../assets/wrappers/Navbar";
+import "../sass/navBar.scss";
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa";
 import { useContextApp } from "../context/contextApp";
 //import Logo from "./Logo"
+
+//using react icons in nav bar next to the navigation links
 import { useState } from "react";
 const Navbar = () => {
+  //toggling small side bar for smaller screens
   const [showLogout, setShowLogout] = useState(false);
+
   const { toggleSidebar, logoutUser, user } = useContextApp();
   return (
-    <Wrapper>
+    <div className="navCom">
       <div className="nav-center">
         <button type="button" className="toggle-btn" onClick={toggleSidebar}>
           <FaAlignLeft></FaAlignLeft>
@@ -32,7 +36,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </Wrapper>
+    </div>
   );
 };
 

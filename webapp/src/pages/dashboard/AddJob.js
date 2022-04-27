@@ -1,13 +1,13 @@
 import { FormInput, AlertMessage, FormRowSelect } from "../../components";
 import { useContextApp } from "../../context/contextApp";
-import Wrapper from "../../assets/wrappers/DashboardFormPage";
+import "../../sass/DashboardPage.scss";
 
 const AddJob = () => {
   const {
     isLoading,
     isEditing,
     showAlert,
-    displayAlert,
+
     position,
     company,
     jobLocation,
@@ -19,33 +19,35 @@ const AddJob = () => {
     clearValues,
     createJob,
     editJob,
+    dateOfInterview,
+    addEvent,
   } = useContextApp();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // if (!position || !company || !jobLocation) {
-    //   displayAlert();
+    //   showAlert();
     //   return;
     // }
-    if(isEditing){
-      editJob()
-      return
+    if (isEditing) {
+      editJob();
+      return;
     }
-    createJob()
+    createJob();
   };
 
   const handleJobInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    handleChange({name, value})
+    handleChange({ name, value });
   };
 
   return (
-    <Wrapper>
+    <div className="jobCommon">
       <form className="form">
         <h3>{isEditing ? "Edit Job Status" : "Add New Job"}</h3>
-        {displayAlert && <AlertMessage />}
+        {showAlert && <AlertMessage />}
 
         {/*HTML element for position field */}
         <div className="form-center">
@@ -55,37 +57,48 @@ const AddJob = () => {
             labelText="Job Role"
             value={position}
             handleChange={handleJobInput}
+            placeholder="Enter a job role"
           />
-          {/* company */}
+          {/* html element company */}
           <FormInput
             type="text"
             name="company"
             value={company}
             handleChange={handleJobInput}
+            placeholder="Enter the company"
           />
-          {/* location */}
+          {/* html element for location */}
           <FormInput
             type="text"
             labelText="location"
             name="jobLocation"
             value={jobLocation}
             handleChange={handleJobInput}
+            placeholder="Enter the job location"
           />
-          {/* job status */}
-          <FormRowSelect 
-            name="status" 
-            value={status} 
+          {/* html element for job status */}
+          <FormRowSelect
+            name="status"
+            value={status}
             handleChange={handleJobInput}
-            list={statusOptions} />
-          {/* job type */}
-          <FormRowSelect 
-            name="jobType" 
-            labelText='Job type'
-            value={jobType} 
-            handleChange={handleJobInput}
-            list={jobTypeOptions} 
+            list={statusOptions}
+            placeholder="Enter the job status"
           />
-          {/* btn container */}
+          {/* html element for job type */}
+          <FormRowSelect
+            name="jobType"
+            labelText="Job type"
+            value={jobType}
+            handleChange={handleJobInput}
+            list={jobTypeOptions}
+          />
+          <FormInput
+            type="date"
+            name="dateOfInterview"
+            labelText="Interview Date"
+            handleChange={handleJobInput}
+          />
+          {/* html element for btn container */}
           <div className="btn-container">
             <button
               className="btn btn-block submit-btn"
@@ -95,15 +108,20 @@ const AddJob = () => {
             >
               submit
             </button>
-            <button className='btn btn-block clear-btn' onClick={(e)=>{
-              e.preventDefault()
-              clearValues()
-              console.log("hello")
-            }}>clear</button>
+            <button
+              className="btn btn-block clear-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                clearValues();
+                //console.log("hello")
+              }}
+            >
+              clear
+            </button>
           </div>
         </div>
       </form>
-    </Wrapper>
+    </div>
   );
 };
 

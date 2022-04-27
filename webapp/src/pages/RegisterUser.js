@@ -1,9 +1,14 @@
+import "../sass/RegistrationPage.scss";
 import React from "react";
 import { useState, useEffect } from "react";
 import { AlertMessage, FormInput } from "../components";
 import { useContextApp } from "../context/contextApp";
 import { useNavigate } from "react-router-dom";
+import emailjs from "emailjs-com";
 
+//consists of a form with user registeration inputs
+
+//setting up the inistial state
 const State = {
   name: "",
   email: "",
@@ -13,12 +18,21 @@ const State = {
 };
 
 const RegisterUser = () => {
+  //get user state and invoke the use navigator hook
   const navigate = useNavigate();
   const [values, setValues] = useState(State);
-  const { user, isLoading, displayAlertMsg, showAlert, userRegistration, loginUser , setupUser} =
-    useContextApp();
+  const {
+    user,
+    isLoading,
+    displayAlertMsg,
+    showAlert,
+    userRegistration,
+    loginUser,
+    setupUser,
+  } = useContextApp();
   //console.log(state);
 
+  //to toggle between login and register form
   const toggleRegister = () => {
     setValues({ ...values, isaMember: !values.isaMember });
   };
@@ -34,6 +48,7 @@ const RegisterUser = () => {
     e.preventDefault();
     const { name, email, password, isaMember } = values;
     // console.log(e.target);
+
     //adding validation check for the input fields before submit
     if (
       !values.email ||
@@ -43,12 +58,42 @@ const RegisterUser = () => {
       showAlert();
       return;
     }
-
     const currentUser = { name, password, email };
     if (isaMember) {
-      setupUser({currentUser, endPoint:'login', alertMsg:'Login successful! Redirecting...'})
+      setupUser({
+        currentUser,
+        endPoint: "login",
+        alertMsg: "Login successful! Redirecting...",
+      });
     } else {
-      setupUser({currentUser, endPoint:'register', alertMsg:'User Created! Redirecting...'})
+      setupUser({
+        currentUser,
+        endPoint: "register",
+        alertMsg: "User Created! Redirecting...",
+      });
+      e.preventDefault();
+
+      let reply_to = e.target[1].value;
+      var contactParams = {
+        reply_to: reply_to,
+      };
+
+      //sending an email to user as soon as they register
+      emailjs
+        .send(
+          "service_07228zq",
+          "template_g23o757",
+          contactParams,
+          "9HB12qcHBbdIggQe6"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
     }
     //console.log(values);
   };
@@ -56,16 +101,21 @@ const RegisterUser = () => {
     if (user) {
       setTimeout(() => {
         navigate("/");
-      }, 3000);
+      }, 2000);
     }
   }, [user, navigate]);
 
   return (
-    <div>
+    <div className="regCom">
       {/*Form HTML element for user Login or Registration */}
-      <form className="form" onSubmit={fnSubmit}>
+
+      <h1>
+        Intelli<b>Jobs</b>
+      </h1>
+      <form className="formReg" onSubmit={fnSubmit}>
         <h3>{values.isaMember ? "Log-in" : "Register Now"}</h3>
         {displayAlertMsg && <AlertMessage></AlertMessage>}
+
         {/* Form Name input field HTML elements displayed only for non members */}
         {!values.isaMember && (
           <FormInput
@@ -101,6 +151,7 @@ const RegisterUser = () => {
           </button>
         </p>
       </form>
+      <h1></h1>
     </div>
   );
 };

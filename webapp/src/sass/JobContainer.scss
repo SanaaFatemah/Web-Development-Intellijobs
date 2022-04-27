@@ -1,11 +1,10 @@
-import styled from 'styled-components'
-
-const Wrapper = styled.section`
+.jobContaier {
   margin-top: 4rem;
+
   h2 {
     text-transform: none;
   }
-  & > h5 {
+  h2 > h5 {
     font-weight: 700;
   }
   .jobs {
@@ -20,5 +19,4 @@ const Wrapper = styled.section`
       gap: 1rem;
     }
   }
-`
-export default Wrapper
+}
