@@ -7,7 +7,7 @@ const AddJob = () => {
     isLoading,
     isEditing,
     showAlert,
-    displayAlert,
+
     position,
     company,
     jobLocation,
@@ -20,7 +20,7 @@ const AddJob = () => {
     createJob,
     editJob,
     dateOfInterview,
-    addEvent
+    addEvent,
   } = useContextApp();
 
   const handleSubmit = (e) => {
@@ -57,7 +57,7 @@ const AddJob = () => {
             labelText="Job Role"
             value={position}
             handleChange={handleJobInput}
-            placeholder = "Enter a job role"
+            placeholder="Enter a job role"
           />
           {/* company */}
           <FormInput
@@ -65,7 +65,7 @@ const AddJob = () => {
             name="company"
             value={company}
             handleChange={handleJobInput}
-            placeholder = "Enter the company"
+            placeholder="Enter the company"
           />
           {/* location */}
           <FormInput
@@ -74,7 +74,7 @@ const AddJob = () => {
             name="jobLocation"
             value={jobLocation}
             handleChange={handleJobInput}
-            placeholder = "Enter the job location"
+            placeholder="Enter the job location"
           />
           {/* job status */}
           <FormRowSelect
@@ -82,7 +82,7 @@ const AddJob = () => {
             value={status}
             handleChange={handleJobInput}
             list={statusOptions}
-            placeholder = "Enter the job status"
+            placeholder="Enter the job status"
           />
           {/* job type */}
           <FormRowSelect
@@ -93,14 +93,11 @@ const AddJob = () => {
             list={jobTypeOptions}
           />
           <FormInput
-
-type="date"
-
-name="date"
-
-handleChange={handleChange}
-
-/>
+            type="date"
+            name="dateOfInterview"
+            labelText="Interview Date"
+            handleChange={handleJobInput}
+          />
           {/* btn container */}
           <div className="btn-container">
             <button
