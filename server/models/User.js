@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
+//Setting up the suer scehma
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -15,12 +15,14 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide email"],
     unique: true,
+
     //using validator function to verify the email Id
     validate: {
       validator: validator.isEmail,
       message: "Please provide a valid email",
     },
   },
+  //Applying a validation for the password to be more than 6 characters
   password: {
     type: String,
     required: [true, "Please provide password"],
@@ -31,14 +33,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     maxlength: 20,
     trim: true,
-    //default: "",
+    
   },
   location: {
     type: String,
     maxlength: 20,
     trim: true,
-    //default: "my nation",
-    //placeholder:"Location"
+    
 
   },
 });

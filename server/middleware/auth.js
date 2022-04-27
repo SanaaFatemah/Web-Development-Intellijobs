@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { UnAuthenticated } from "../errors/index.js"
 
+//To authenticate a user using JWT token functionality
 UnAuthenticated
 const auth = async (req, res, next) => {
     const authHeader = req.headers.authorization

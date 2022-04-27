@@ -31,9 +31,7 @@ import authenticateUser from './middleware/auth.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-//app.use(express.static(path.resolve(__dirname, '../webapp/build')))
 
-//app.use(cors());
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
@@ -61,11 +59,14 @@ app.get('*',(req,res)=>{
   res.sendFile(path.resolve(__dirname, '../webapp/build', 'index.html'))
 })
 
+//Errorhandling
 app.use(doesNotExistMiddleware);
 app.use(handleErrorMiddleware);
 
+//Setting the port
 const port = process.env.PORT || 5001;
 
+//Starting the connection with mongoose db
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL);

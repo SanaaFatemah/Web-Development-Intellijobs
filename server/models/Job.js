@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+//Setting up the schema for the application
 const JobSchema = new mongoose.Schema(
   {
     company: {

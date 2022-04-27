@@ -9,6 +9,7 @@ import checkPermissions from "../utils/checkPermission.js";
 import mongoose from "mongoose";
 import moment from "moment";
 
+//Functionality to create a job
 const createJob = async (req, res) => {
   const { position, company } = req.body;
 
@@ -22,6 +23,7 @@ const createJob = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ job });
 };
 
+//Functionality to get all the job
 const getAllJobs = async (req, res) => {
   const { status, jobType, sort, search } = req.query;
 
@@ -30,7 +32,7 @@ const getAllJobs = async (req, res) => {
   };
 
   //add stuff based on condition
-
+  //Querying on the search screen based on various conditions
   if (status && status !== "All") {
     queryObject.status = status;
   }
@@ -44,11 +46,11 @@ const getAllJobs = async (req, res) => {
   }
 
   //No await
-  //console.log(queryObject);
+  
   let result = Job.find(queryObject);
 
   //chain sort condition
-
+  //Sorting functionality
   if (sort === "Latest") {
     result = result.sort("-createdAt");
   }
@@ -104,7 +106,7 @@ const getCalJobs = async (req, res) => {
   }
 
   //No await
-  //console.log(queryObject);
+  
   let result = Job.find(queryObject);
 
   //chain sort condition
@@ -143,7 +145,7 @@ const getCalJobs = async (req, res) => {
 };
 
 
-
+////Functionality to update all the jobs
 const updateJob = async (req, res) => {
   const { id: jobId } = req.params;
   const { company, position } = req.body;
@@ -158,8 +160,6 @@ const updateJob = async (req, res) => {
   }
 
   //check permissions
-  //console.log(typeof req.user.userId);
-  //console.log(typeof job.createdBy);
 
   checkPermissions(req.user, job.createdBy);
 
@@ -168,12 +168,10 @@ const updateJob = async (req, res) => {
     runValidators: true,
   });
 
-  // job.position = position
-  // job.company = company
-  // job.jobLocation = jobLocation
-  // await job.save()
   res.status(StatusCodes.OK).json({ jobUpdate });
 };
+  
+//Functionality to delete a job
 const deleteJob = async (req, res) => {
   const { id: jobId } = req.params;
   const job = await Job.findOne({ _id: jobId });
@@ -197,7 +195,6 @@ const showStats = async (req, res) => {
     //grouping them on based on job status and count of each group
     { $group: { _id: "$status", count: { $sum: 1 } } },
   ]);
-  //res.send("show stats");
 
   //using reduce which returns an object of diff status title by iterrating over the array
   stats = stats.reduce((acc, curr) => {
