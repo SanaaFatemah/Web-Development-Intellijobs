@@ -26,7 +26,7 @@ const Job = ({
     <div className="jCommon">
       <header>
         <div className="main-icon">{company.charAt(0)}</div>
-        <div className="info">
+        <div className="details">
           <h5>{position}</h5>
           <p>{company}</p>
         </div>

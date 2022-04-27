@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.section`
   height: 6rem;
@@ -8,7 +8,7 @@ const Wrapper = styled.section`
   justify-content: end;
   flex-wrap: wrap;
   gap: 1rem;
-  .btn-container {
+  .button-container {
     background: var(--primary-100);
     border-radius: var(--borderRadius);
   }
@@ -28,7 +28,7 @@ const Wrapper = styled.section`
     background: var(--primary-500);
     color: var(--white);
   }
-  .prev-btn,
+  .previous-btn,
   .next-btn {
     width: 100px;
     height: 40px;
@@ -45,10 +45,10 @@ const Wrapper = styled.section`
     cursor: pointer;
     transition: var(--transition);
   }
-  .prev-btn:hover,
+  .previous-btn:hover,
   .next-btn:hover {
     background: var(--primary-500);
     color: var(--white);
   }
-`
-export default Wrapper
+`;
+export default Wrapper;

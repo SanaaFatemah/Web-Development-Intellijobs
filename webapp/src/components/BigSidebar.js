@@ -1,22 +1,24 @@
 import "../sass/BigSideBar.scss";
-import { useContextApp } from "../context/contextApp";
-import NavLinks from "./NavLinks";
 import Logo from "../components/Logo";
+import NavLinks from "./NavLinks";
+import { useContextApp } from "../context/contextApp";
 
 const BigSidebar = () => {
-  const { showSideBar, toggleSidebar } = useContextApp();
+  const { displaySideBar, sideToggle } = useContextApp();
   return (
     <div className="bigSidecom">
       <div
         className={
-          showSideBar ? "sidebar-container" : "sidebar-container show-sidebar"
+          displaySideBar
+            ? "sidebar-container"
+            : "sidebar-container display-sidebar"
         }
       >
         <div className="content">
           <header>
             <Logo />
           </header>
-          <NavLinks toggleSidebar={toggleSidebar} />
+          <NavLinks sideToggle={sideToggle} />
         </div>
       </div>
     </div>

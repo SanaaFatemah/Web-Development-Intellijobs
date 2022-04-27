@@ -9,7 +9,7 @@ import checkPermissions from "../utils/checkPermission.js";
 import mongoose from "mongoose";
 import moment from "moment";
 
-const createJob = async (req, res) => {
+const createNewJob = async (req, res) => {
   const { position, company } = req.body;
 
   if (!position || !company) {
@@ -77,9 +77,9 @@ const getAllJobs = async (req, res) => {
   //to count the number of total jobs in all pages for a specific query search
   const totalJobs = await Job.countDocuments(queryObject);
   //to count the number of pages
-  const numOfPages = Math.ceil(totalJobs / limit); //ceil to round up
+  const pageNums = Math.ceil(totalJobs / limit); //ceil to round up
 
-  res.status(StatusCodes.OK).json({ jobs, totalJobs, numOfPages: numOfPages });
+  res.status(StatusCodes.OK).json({ jobs, totalJobs, pageNums: pageNums });
 };
 
 const updateJob = async (req, res) => {
@@ -181,4 +181,4 @@ const showStats = async (req, res) => {
   res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
 };
 
-export { createJob, deleteJob, getAllJobs, updateJob, showStats };
+export { createNewJob, deleteJob, getAllJobs, updateJob, showStats };

@@ -8,7 +8,7 @@ const ChartsContainer = () => {
   const [barChart, setBarChart] = useState(true);
   const { monthlyApplications: data } = useContextApp();
   return (
-    <div className="chartBody">
+    <div className="statsBosy">
       <h4>Monthly applications</h4>
       <button type="button" onClick={() => setBarChart(!barChart)}>
         {barChart ? "Area Chart" : "Bar Chart"}

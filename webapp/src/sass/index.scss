@@ -160,31 +160,31 @@ ul {
 .form:hover {
   box-shadow: var(--shadow-4);
 }
-.form-label {
+.formInputLabel {
   display: block;
   font-size: var(--smallText);
   margin-bottom: 0.5rem;
   text-transform: capitalize;
   letter-spacing: var(--letterSpacing);
 }
-.form-input,
+.formInput,
 .form-textarea,
-.form-select {
+.formInputSelect {
   width: 100%;
   padding: 0.375rem 0.75rem;
   border-radius: var(--borderRadius);
   background: var(--backgroundColor);
   border: 1px solid var(--grey-200);
 }
-.form-input::placeholder {
+.formInput::placeholder {
   color: var(--grey-500);
 }
-.form-input,
-.form-select,
+.formInput,
+.formInputSelect,
 .btn-block {
   height: 35px;
 }
-.form-row {
+.formInputRow {
   margin-bottom: 1rem;
 }
 
@@ -242,24 +242,24 @@ ul {
   min-height: 100vh;
 }
 
-.coffee-info {
+.coffee-details {
   text-align: center;
   text-transform: capitalize;
   margin-bottom: 1rem;
   letter-spacing: var(--letterSpacing);
 }
-.coffee-info span {
+.coffee-details span {
   display: block;
 }
-.coffee-info a {
+.coffee-details a {
   color: var(--primary-500);
 }
 
 @media screen and (min-width: 992px) {
-  .coffee-info {
+  .coffee-details {
     text-align: left;
   }
-  .coffee-info span {
+  .coffee-details span {
     display: inline-block;
     margin-right: 0.5rem;
   }

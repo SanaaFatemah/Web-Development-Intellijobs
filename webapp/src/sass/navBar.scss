@@ -27,7 +27,7 @@
     align-items: center;
   }
   background: var(--grey-900);
-  .btn-container {
+  .button-container {
     position: relative;
     margin-bottom: 4em;
   }
@@ -40,7 +40,7 @@
     box-shadow: var(--shadow-2);
   }
 
-  .dropdown {
+  .drpdwm {
     position: absolute;
     //top: 40px;
     left: 0;
@@ -52,12 +52,11 @@
     visibility: hidden;
     border-radius: var(--borderRadius);
   }
-  .show-dropdown {
-    visibility:inherit;
+  .show-drpdwm {
+    visibility: inherit;
     background-color: white;
-    
   }
-  .dropdown-btn {
+  .drpdwn-button {
     background: white;
     border-color: transparent;
     color: var(---grey-800);
@@ -66,7 +65,7 @@
     cursor: pointer;
     color: Black;
   }
-  .logo-text {
+  .logo-txt {
     display: none;
     margin: 0;
   }
@@ -80,7 +79,7 @@
     .logo {
       display: none;
     }
-    .logo-text {
+    .logo-txt {
       display: block;
     }
   }

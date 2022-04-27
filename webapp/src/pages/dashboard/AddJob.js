@@ -7,7 +7,6 @@ const AddJob = () => {
     isLoading,
     isEditing,
     showAlert,
-    displayAlert,
     position,
     company,
     jobLocation,
@@ -16,8 +15,8 @@ const AddJob = () => {
     status,
     statusOptions,
     handleChange,
-    clearValues,
-    createJob,
+    valuesClear,
+    createNewJob,
     editJob,
   } = useContextApp();
 
@@ -32,10 +31,10 @@ const AddJob = () => {
       editJob();
       return;
     }
-    createJob();
+    createNewJob();
   };
 
-  const handleJobInput = (e) => {
+  const jobInputHandle = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     handleChange({ name, value });
@@ -54,16 +53,16 @@ const AddJob = () => {
             name="position"
             labelText="Job Role"
             value={position}
-            handleChange={handleJobInput}
-            placeholder = "Enter a job role"
+            handleChange={jobInputHandle}
+            placeholder="Enter a job role"
           />
           {/* company */}
           <FormInput
             type="text"
             name="company"
             value={company}
-            handleChange={handleJobInput}
-            placeholder = "Enter the company"
+            handleChange={jobInputHandle}
+            placeholder="Enter the company"
           />
           {/* location */}
           <FormInput
@@ -71,27 +70,27 @@ const AddJob = () => {
             labelText="location"
             name="jobLocation"
             value={jobLocation}
-            handleChange={handleJobInput}
-            placeholder = "Enter the job location"
+            handleChange={jobInputHandle}
+            placeholder="Enter the job location"
           />
           {/* job status */}
           <FormRowSelect
             name="status"
             value={status}
-            handleChange={handleJobInput}
+            handleChange={jobInputHandle}
             list={statusOptions}
-            placeholder = "Enter the job status"
+            placeholder="Enter the job status"
           />
           {/* job type */}
           <FormRowSelect
             name="jobType"
             labelText="Job type"
             value={jobType}
-            handleChange={handleJobInput}
+            handleChange={jobInputHandle}
             list={jobTypeOptions}
           />
           {/* btn container */}
-          <div className="btn-container">
+          <div className="button-container">
             <button
               className="btn btn-block submit-btn"
               type="submit"
@@ -104,7 +103,7 @@ const AddJob = () => {
               className="btn btn-block clear-btn"
               onClick={(e) => {
                 e.preventDefault();
-                clearValues();
+                valuesClear();
                 //console.log("hello")
               }}
             >

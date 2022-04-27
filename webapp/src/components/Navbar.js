@@ -4,29 +4,33 @@ import { useContextApp } from "../context/contextApp";
 //import Logo from "./Logo"
 import { useState } from "react";
 const Navbar = () => {
-  const [showLogout, setShowLogout] = useState(false);
-  const { toggleSidebar, logoutUser, user } = useContextApp();
+  const [displayLogout, setDisplayLogout] = useState(false);
+  const { sideToggle, userLogout, user } = useContextApp();
   return (
     <div className="navCom">
       <div className="nav-center">
-        <button type="button" className="toggle-btn" onClick={toggleSidebar}>
+        <button type="button" className="toggle-btn" onClick={sideToggle}>
           <FaAlignLeft></FaAlignLeft>
         </button>
         <div>
-          <h3 className="logo-text">Track Your Job Applications</h3>
+          <h3 className="logo-txt">Track Your Job Applications</h3>
         </div>
-        <div className="btn-container">
+        <div className="button-container">
           <button
             type="button"
             className="btn"
-            onClick={() => setShowLogout(!showLogout)}
+            onClick={() => setDisplayLogout(!displayLogout)}
           >
             <FaUserCircle></FaUserCircle>
             {user?.name}
             <FaCaretDown></FaCaretDown>
           </button>
-          <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
-            <button type="button" className="dropdown-btn" onClick={logoutUser}>
+          <div className={displayLogout ? "drpdwm show-drpdwm" : "drpdwm"}>
+            <button
+              type="button"
+              className="drpdwn-button"
+              onClick={userLogout}
+            >
               logout
             </button>
           </div>

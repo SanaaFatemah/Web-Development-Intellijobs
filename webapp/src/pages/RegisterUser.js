@@ -22,13 +22,13 @@ const RegisterUser = () => {
     isLoading,
     displayAlertMsg,
     showAlert,
-    userRegistration,
+    userRegister,
     loginUser,
-    setupUser,
+    userSetup,
   } = useContextApp();
   //console.log(state);
 
-  const toggleRegister = () => {
+  const registerToggle = () => {
     setValues({ ...values, isaMember: !values.isaMember });
   };
 
@@ -54,13 +54,13 @@ const RegisterUser = () => {
     }
     const currentUser = { name, password, email };
     if (isaMember) {
-      setupUser({
+      userSetup({
         currentUser,
         endPoint: "login",
         alertMsg: "Login successful! Redirecting...",
       });
     } else {
-      setupUser({
+      userSetup({
         currentUser,
         endPoint: "register",
         alertMsg: "User Created! Redirecting...",
@@ -69,15 +69,24 @@ const RegisterUser = () => {
 
       let reply_to = e.target[1].value;
       var contactParams = {
-        reply_to: reply_to
-      }
+        reply_to: reply_to,
+      };
 
-      emailjs.send('service_07228zq', 'template_g23o757', contactParams, '9HB12qcHBbdIggQe6')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
+      emailjs
+        .send(
+          "service_07228zq",
+          "template_g23o757",
+          contactParams,
+          "9HB12qcHBbdIggQe6"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
     }
     //console.log(values);
   };
@@ -130,14 +139,13 @@ const RegisterUser = () => {
         {/* Adding a register button and calling the toggle function between registered user login and new user login*/}
         <p>
           {values.isaMember ? "Not a member?" : "Already a member?"}
-          <button type="button" onClick={toggleRegister} className="member-btn">
+          <button type="button" onClick={registerToggle} className="member-btn">
             {values.isaMember ? "Register Now" : "Log-in"}
           </button>
         </p>
       </form>
       <h1></h1>
     </div>
-    
   );
 };
 

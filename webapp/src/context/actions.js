@@ -5,22 +5,22 @@ export const SHOW_ALERT = "DISPLAY_ALERT";
 export const HIDE_ALERT = "HIDE_ALERT";
 
 //Actions for user registeration page
-export const REGISTER_USER_START = "REGISTER_USER_START";
-export const REGISTER_USER_SUCCESSFUL = "REGISTER_USER_SUCCESSFUL";
-export const REGISTER_USER_ERROR = "REGISTER_USER_ERROR";
+export const USER_REGISTRATION_START = "USER_REGISTRATION_START";
+export const USER_REGISTRATION_SUCCESSFUL = "USER_REGISTRATION_SUCCESSFUL";
+export const USER_REGISTRATION_ERROR = "USER_REGISTRATION_ERROR";
 
 //Actions for login registeration page
-export const LOGIN_USER_START = "LOGIN_USER_START";
-export const LOGIN_USER_SUCCESSFUL = "LOGIN_USER_SUCCESSFUL";
-export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR";
+export const USER_LOGIN_START = "USER_LOGIN_START";
+export const USER_LOGIN_SUCCESSFUL = "USER_LOGIN_SUCCESSFUL";
+export const USER_LOGIN_ERROR = "USER_LOGIN_ERROR";
 
 //Actions for profile page
-export const SETUP_USER_START = "SETUP_USER_START";
-export const SETUP_USER_SUCCESSFUL = "SETUP_USER_SUCCESSFUL";
-export const SETUP_USER_ERROR = "SETUP_USER_ERROR";
+export const USER_SETUP_START = "USER_SETUP_START";
+export const USER_SETUP_SUCCESSFUL = "USER_SETUP_SUCCESSFUL";
+export const USER_SETUP_ERROR = "USER_SETUP_ERROR";
 
 //Actions for sidebar
-export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
+export const SIDEBAR_TOGGLE = "SIDEBAR_TOGGLE";
 export const LOGOUT_USER = "LOGOUT_USER";
 
 //Actions for Update User Page
@@ -54,11 +54,11 @@ export const EDIT_JOB_BEGIN = "EDIT_JOB_BEGIN";
 export const EDIT_JOB_SUCCESS = "EDIT_JOB_SUCCESS";
 export const EDIT_JOB_ERROR = "EDIT_JOB_ERROR";
 
-export const SHOW_STATS_BEGIN = "SHOW_STATS_BEGIN";
-export const SHOW_STATS_SUCCESS = "SHOW_STATS_SUCCESS";
+export const STATS_SHOW_BEGIN = "STATS_SHOW_BEGIN";
+export const STATS_SHOW_SUCCESS = "STATS_SHOW_SUCCESS";
 
 //Actions for clear button on job search page
 export const CLEAR_SEARCH = "CLEAR_SEARCH";
 
-//Actions for changePage
-export const CHANGE_PAGE = "CHANGE_PAGE";
+//Actions for pageChange
+export const PAGE_CHANGE = "PAGE_CHANGE";

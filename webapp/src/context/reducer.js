@@ -1,16 +1,16 @@
 import {
   SHOW_ALERT,
   HIDE_ALERT,
-  REGISTER_USER_START,
-  REGISTER_USER_SUCCESSFUL,
-  REGISTER_USER_ERROR,
-  LOGIN_USER_ERROR,
-  LOGIN_USER_START,
-  LOGIN_USER_SUCCESSFUL,
-  SETUP_USER_START,
-  SETUP_USER_ERROR,
-  SETUP_USER_SUCCESSFUL,
-  TOGGLE_SIDEBAR,
+  USER_REGISTRATION_START,
+  USER_REGISTRATION_SUCCESSFUL,
+  USER_REGISTRATION_ERROR,
+  USER_LOGIN_ERROR,
+  USER_LOGIN_START,
+  USER_LOGIN_SUCCESSFUL,
+  USER_SETUP_START,
+  USER_SETUP_ERROR,
+  USER_SETUP_SUCCESSFUL,
+  SIDEBAR_TOGGLE,
   LOGOUT_USER,
   UPDATE_USER_START,
   UPDATE_USER_SUCCESSFULL,
@@ -27,10 +27,10 @@ import {
   EDIT_JOB_BEGIN,
   EDIT_JOB_SUCCESS,
   EDIT_JOB_ERROR,
-  SHOW_STATS_BEGIN,
-  SHOW_STATS_SUCCESS,
+  STATS_SHOW_BEGIN,
+  STATS_SHOW_SUCCESS,
   CLEAR_SEARCH,
-  CHANGE_PAGE,
+  PAGE_CHANGE,
 } from "./actions";
 
 import { State } from "./contextApp";
@@ -55,11 +55,11 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === REGISTER_USER_START) {
+  if (action.type === USER_REGISTRATION_START) {
     return { ...state, isLoading: true };
   }
 
-  if (action.type === REGISTER_USER_SUCCESSFUL) {
+  if (action.type === USER_REGISTRATION_SUCCESSFUL) {
     return {
       ...state,
       isLoading: false,
@@ -73,7 +73,7 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === REGISTER_USER_ERROR) {
+  if (action.type === USER_REGISTRATION_ERROR) {
     return {
       ...state,
       isLoading: false,
@@ -83,11 +83,11 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === LOGIN_USER_START) {
+  if (action.type === USER_LOGIN_START) {
     return { ...state, isLoading: true };
   }
 
-  if (action.type === LOGIN_USER_SUCCESSFUL) {
+  if (action.type === USER_LOGIN_SUCCESSFUL) {
     return {
       ...state,
       isLoading: false,
@@ -101,7 +101,7 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === LOGIN_USER_ERROR) {
+  if (action.type === USER_LOGIN_ERROR) {
     return {
       ...state,
       isLoading: false,
@@ -111,11 +111,11 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === SETUP_USER_START) {
+  if (action.type === USER_SETUP_START) {
     return { ...state, isLoading: true };
   }
 
-  if (action.type === SETUP_USER_SUCCESSFUL) {
+  if (action.type === USER_SETUP_SUCCESSFUL) {
     return {
       ...state,
       isLoading: false,
@@ -129,7 +129,7 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === SETUP_USER_ERROR) {
+  if (action.type === USER_SETUP_ERROR) {
     return {
       ...State,
       isLoading: false,
@@ -138,7 +138,7 @@ const reducer = (state, action) => {
       alertMsg: action.payload.msg,
     };
   }
-  if (action.type === TOGGLE_SIDEBAR) {
+  if (action.type === SIDEBAR_TOGGLE) {
     return {
       ...state,
       showSidebar: !state.showSidebar,
@@ -232,7 +232,7 @@ const reducer = (state, action) => {
       isLoading: false,
       jobs: action.payload.jobs,
       totalJobs: action.payload.totalJobs,
-      numOfPages: action.payload.numOfPages,
+      pageNums: action.payload.pageNums,
     };
   }
   if (action.type === SET_EDIT_JOB) {
@@ -278,7 +278,7 @@ const reducer = (state, action) => {
       alertMsg: action.payload.msg,
     };
   }
-  if (action.type === SHOW_STATS_BEGIN) {
+  if (action.type === STATS_SHOW_BEGIN) {
     return {
       ...state,
       isLoading: true,
@@ -286,7 +286,7 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === SHOW_STATS_SUCCESS) {
+  if (action.type === STATS_SHOW_SUCCESS) {
     return {
       ...state,
       isLoading: false,
@@ -305,7 +305,7 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === CHANGE_PAGE) {
+  if (action.type === PAGE_CHANGE) {
     return { ...state, page: action.payload.page };
   }
 

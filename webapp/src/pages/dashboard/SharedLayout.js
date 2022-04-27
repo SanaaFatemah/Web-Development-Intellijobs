@@ -4,12 +4,12 @@ import "../../sass/SharedLayou.scss";
 import { Navbar, BigSidebar, SmallSidebar } from "../../components";
 const SharedLayout = () => {
   return (
-    <main className="dashboard">
+    <main className="dashbrd">
       <SmallSidebar></SmallSidebar>
       <BigSidebar></BigSidebar>
       <div>
         <Navbar></Navbar>
-        <div className="dashboard-page">
+        <div className="dashbrd-page">
           <Outlet></Outlet>
         </div>
       </div>

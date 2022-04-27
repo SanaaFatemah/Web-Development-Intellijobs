@@ -1,52 +1,54 @@
-import {useContextApp} from '../context/contextApp'
-import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi' 
-import Wrapper from '../assets/wrappers/PageBtnContainer'
+import { useContextApp } from "../context/contextApp";
+import { HiChevronDoubleLeft, HiChevronDoubleRight } from "react-icons/hi";
+import Wrapper from "../assets/wrappers/PageBtnContainer";
 
 const PageBtnContainer = () => {
-    const {numOfPages, page, changePage } = useContextApp()
+  const { pageNums, page, pageChange } = useContextApp();
 
-    const pages = Array.from({length:numOfPages}, (_, index) => {
-        return index + 1
-    })
-    console.log(pages)
-    const nextPage = () => {
-        let newPage = page +1
-        if(newPage===numOfPages){
-            newPage=1
-        }
-        changePage(newPage)
+  const pages = Array.from({ length: pageNums }, (_, index) => {
+    return index + 1;
+  });
+  console.log(pages);
+  const pageNext = () => {
+    let pageNew = page + 1;
+    if (pageNew === pageNums) {
+      pageNew = 1;
     }
-    const prevPage = () => {
-        let newPage = page -1
-        if(newPage<1){
-            newPage=numOfPages
-        }
-        changePage(newPage)
+    pageChange(pageNew);
+  };
+  const prevPage = () => {
+    let pageNew = page - 1;
+    if (pageNew < 1) {
+      pageNew = pageNums;
     }
-    return (
-        <Wrapper>
-            <button className='prev-btn' onClick={prevPage}>
-                <HiChevronDoubleLeft/>
-                prev
+    pageChange(pageNew);
+  };
+  return (
+    <Wrapper>
+      <button className="previous-btn" onClick={prevPage}>
+        <HiChevronDoubleLeft />
+        previous
+      </button>
+      <div className="button-container">
+        {pages.map((pageNumber) => {
+          return (
+            <button
+              type="button"
+              className={pageNumber === page ? "pageBtn active" : "pageBtn"}
+              key={pageNumber}
+              onClick={() => pageChange(pageNumber)}
+            >
+              {pageNumber}
             </button>
-            <div className='btn-container'>
-                {pages.map((pageNumber)=>{
-                    return <button 
-                    type="button" 
-                    className={pageNumber === page? 'pageBtn active': 'pageBtn'} 
-                    key={pageNumber}
-                    onClick={() => changePage(pageNumber)}
-                    >
-                        {pageNumber}
-                    </button>
-                })}
-            </div>
-            <button className='next-btn' onClick={nextPage}>
-            Next
-                <HiChevronDoubleRight/>
-            </button>
-        </Wrapper>
-    )
-}
+          );
+        })}
+      </div>
+      <button className="next-btn" onClick={pageNext}>
+        Next
+        <HiChevronDoubleRight />
+      </button>
+    </Wrapper>
+  );
+};
 
-export default PageBtnContainer
+export default PageBtnContainer;

@@ -7,7 +7,7 @@ import PageBtnContainer from "./PageBtnContainer";
 
 const JobsContainer = () => {
   const {
-    getJobs,
+    getAllJobs,
     jobs,
     isLoading,
     page,
@@ -16,11 +16,11 @@ const JobsContainer = () => {
     searchStatus,
     searchType,
     sort,
-    numOfPages,
+    pageNums,
   } = useContextApp();
 
   useEffect(() => {
-    getJobs();
+    getAllJobs();
     // eslint-disable-next-line
   }, [page, search, searchStatus, searchType, sort]);
   if (isLoading) {
@@ -45,7 +45,7 @@ const JobsContainer = () => {
           return <Job key={job._id} {...job} />;
         })}
       </div>
-      {numOfPages > 1 && <PageBtnContainer />}
+      {pageNums > 1 && <PageBtnContainer />}
       {/*pagination buttons*/}
     </div>
   );

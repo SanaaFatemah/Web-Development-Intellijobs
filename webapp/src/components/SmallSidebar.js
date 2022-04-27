@@ -5,22 +5,24 @@ import { useContextApp } from "../context/contextApp";
 import NavLinks from "./NavLinks";
 
 const SmallSidebar = () => {
-  const { showSidebar, toggleSidebar } = useContextApp();
+  const { showSidebar, sideToggle } = useContextApp();
   return (
     <h4>
       <div
         className={
-          showSidebar ? "sidebar-container show-sidebar" : "sidebar-container"
+          showSidebar
+            ? "sidebar-container display-sidebar"
+            : "sidebar-container"
         }
       >
         <div className="content">
-          <button type="button" className="close-btn" onClick={toggleSidebar}>
+          <button type="button" className="close-btn" onClick={sideToggle}>
             <FaTimes />
           </button>
           <header>
             <Logo />
           </header>
-          <NavLinks toggleSidebar={toggleSidebar} />
+          <NavLinks sideToggle={sideToggle} />
         </div>
       </div>
     </h4>

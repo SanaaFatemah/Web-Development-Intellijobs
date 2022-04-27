@@ -1,9 +1,16 @@
 import React from "react";
 
-const FormInput = ({ type, name, value, handleChange, labelText, placeholder }) => {
+const FormInput = ({
+  type,
+  name,
+  value,
+  handleChange,
+  labelText,
+  placeholder,
+}) => {
   return (
-    <div className="form-row">
-      <label htmlFor={name} className="form-label">
+    <div className="formInputRow">
+      <label htmlFor={name} className="formInputLabel">
         {labelText || name}
       </label>
 
@@ -12,7 +19,7 @@ const FormInput = ({ type, name, value, handleChange, labelText, placeholder }) 
         value={value}
         name={name}
         onChange={handleChange}
-        className="form-input"
+        className="formInput"
         placeholder={placeholder}
       />
     </div>

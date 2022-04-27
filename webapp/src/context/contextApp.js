@@ -4,16 +4,16 @@ import axios from "axios";
 import {
   SHOW_ALERT,
   HIDE_ALERT,
-  REGISTER_USER_START,
-  REGISTER_USER_SUCCESSFUL,
-  REGISTER_USER_ERROR,
-  LOGIN_USER_ERROR,
-  LOGIN_USER_START,
-  LOGIN_USER_SUCCESSFUL,
-  SETUP_USER_START,
-  SETUP_USER_ERROR,
-  SETUP_USER_SUCCESSFUL,
-  TOGGLE_SIDEBAR,
+  USER_REGISTRATION_START,
+  USER_REGISTRATION_SUCCESSFUL,
+  USER_REGISTRATION_ERROR,
+  USER_LOGIN_ERROR,
+  USER_LOGIN_START,
+  USER_LOGIN_SUCCESSFUL,
+  USER_SETUP_START,
+  USER_SETUP_ERROR,
+  USER_SETUP_SUCCESSFUL,
+  SIDEBAR_TOGGLE,
   LOGOUT_USER,
   UPDATE_USER_START,
   UPDATE_USER_SUCCESSFULL,
@@ -30,10 +30,10 @@ import {
   EDIT_JOB_BEGIN,
   EDIT_JOB_SUCCESS,
   EDIT_JOB_ERROR,
-  SHOW_STATS_BEGIN,
-  SHOW_STATS_SUCCESS,
+  STATS_SHOW_BEGIN,
+  STATS_SHOW_SUCCESS,
   CLEAR_SEARCH,
-  CHANGE_PAGE,
+  PAGE_CHANGE,
 } from "./actions";
 
 // set as default
@@ -66,7 +66,7 @@ const State = {
   status: "Awaiting Response",
   jobs: [],
   totalJobs: 0,
-  numOfPages: 1,
+  pageNums: 1,
   page: 1,
   stats: {},
   monthlyApplications: [],
@@ -111,7 +111,7 @@ const ProviderApp = ({ children }) => {
       console.log(error.response);
       if (error.response.status === 401) {
         console.log("AUTHENTICATION ERROR");
-        logoutUser();
+        userLogout();
       }
       return Promise.reject(error);
     }
@@ -128,38 +128,38 @@ const ProviderApp = ({ children }) => {
     }, 3000);
   };
 
-  const addUserToLocalStorage = ({ user, token, location }) => {
+  const localStorageAddUser = ({ user, token, location }) => {
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("token", token);
     localStorage.setItem("location", location);
   };
 
-  const removeUserFromLocalStorage = () => {
+  const localStorageRemoveUser = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     localStorage.removeItem("location");
   };
 
-  const userRegistration = async (currentUser) => {
+  const userRegister = async (currentUser) => {
     // console.log(currentUser);
-    dispatch({ type: REGISTER_USER_START });
+    dispatch({ type: USER_REGISTRATION_START });
     try {
       const response = await axios.post("/api/v1/auth/register", currentUser);
       //console.log(response);
       const { user, token, location } = response.data;
       dispatch({
-        type: REGISTER_USER_SUCCESSFUL,
+        type: USER_REGISTRATION_SUCCESSFUL,
         payload: {
           user,
           token,
           location,
         },
       });
-      addUserToLocalStorage({ user, token, location });
+      localStorageAddUser({ user, token, location });
     } catch (error) {
       console.log(error.response);
       dispatch({
-        type: REGISTER_USER_ERROR,
+        type: USER_REGISTRATION_ERROR,
         payload: { msg: error.response.data.msg },
       });
     }
@@ -167,32 +167,32 @@ const ProviderApp = ({ children }) => {
   };
 
   const loginUser = async (currentUser) => {
-    dispatch({ type: LOGIN_USER_START });
+    dispatch({ type: USER_LOGIN_START });
     try {
       const { data } = await axios.post("/api/v1/auth/login", currentUser);
 
       const { user, token, location } = data;
       dispatch({
-        type: LOGIN_USER_SUCCESSFUL,
+        type: USER_LOGIN_SUCCESSFUL,
         payload: {
           user,
           token,
           location,
         },
       });
-      addUserToLocalStorage({ user, token, location });
+      localStorageAddUser({ user, token, location });
     } catch (error) {
       console.log(error.response);
       dispatch({
-        type: LOGIN_USER_ERROR,
+        type: USER_LOGIN_ERROR,
         payload: { msg: error.response.data.msg },
       });
     }
     hideAlert();
   };
 
-  const setupUser = async ({ currentUser, endPoint, alertMsg }) => {
-    dispatch({ type: SETUP_USER_START });
+  const userSetup = async ({ currentUser, endPoint, alertMsg }) => {
+    dispatch({ type: USER_SETUP_START });
     try {
       const { data } = await axios.post(
         `/api/v1/auth/${endPoint}`,
@@ -201,7 +201,7 @@ const ProviderApp = ({ children }) => {
 
       const { user, token, location } = data;
       dispatch({
-        type: SETUP_USER_SUCCESSFUL,
+        type: USER_SETUP_SUCCESSFUL,
         payload: {
           user,
           token,
@@ -209,23 +209,23 @@ const ProviderApp = ({ children }) => {
           alertMsg,
         },
       });
-      addUserToLocalStorage({ user, token, location });
+      localStorageAddUser({ user, token, location });
     } catch (error) {
       console.log(error.response);
       dispatch({
-        type: SETUP_USER_ERROR,
+        type: USER_SETUP_ERROR,
         payload: { msg: error.response.data.msg },
       });
     }
     hideAlert();
   };
-  const toggleSidebar = () => {
-    dispatch({ type: TOGGLE_SIDEBAR });
+  const sideToggle = () => {
+    dispatch({ type: SIDEBAR_TOGGLE });
   };
 
-  const logoutUser = () => {
+  const userLogout = () => {
     dispatch({ type: LOGOUT_USER });
-    removeUserFromLocalStorage();
+    localStorageRemoveUser();
   };
 
   const updateUser = async (currentUser) => {
@@ -238,7 +238,7 @@ const ProviderApp = ({ children }) => {
         payload: { user, location, token },
       });
 
-      addUserToLocalStorage({ user, location, token });
+      localStorageAddUser({ user, location, token });
     } catch (error) {
       if (error.response.status !== 401) {
         dispatch({
@@ -254,11 +254,11 @@ const ProviderApp = ({ children }) => {
     dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
   };
 
-  const clearValues = () => {
+  const valuesClear = () => {
     dispatch({ type: CLEAR_VALUES });
   };
 
-  const createJob = async () => {
+  const createNewJob = async () => {
     dispatch({ type: CREATE_JOB_BEGIN });
     try {
       const { position, company, jobLocation, jobType, status } = state;
@@ -280,7 +280,7 @@ const ProviderApp = ({ children }) => {
     }
     hideAlert();
   };
-  const getJobs = async () => {
+  const getAllJobs = async () => {
     const { page, search, searchStatus, searchType, sort } = state;
     //constructing the url with search query parameters
     let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
@@ -291,23 +291,23 @@ const ProviderApp = ({ children }) => {
     dispatch({ type: GET_JOBS_BEGIN });
     try {
       const { data } = await authFetch(url);
-      const { jobs, totalJobs, numOfPages } = data;
+      const { jobs, totalJobs, pageNums } = data;
       dispatch({
         type: GET_JOBS_SUCCESS,
         payload: {
           jobs,
           totalJobs,
-          numOfPages,
+          pageNums,
         },
       });
     } catch (error) {
-      logoutUser()
+      userLogout();
     }
     hideAlert();
   };
 
   // useEffect(() => {
-  // getJobs()
+  // getAllJobs()
   // }, [])
 
   const setEditJob = (id) => {
@@ -342,9 +342,9 @@ const ProviderApp = ({ children }) => {
     dispatch({ type: DELETE_JOB_BEGIN });
     try {
       await authFetch.delete(`/jobs/${id}`);
-      getJobs();
+      getAllJobs();
     } catch (error) {
-      logoutUser()
+      userLogout();
     }
   };
   const clearSearch = () => {
@@ -353,46 +353,46 @@ const ProviderApp = ({ children }) => {
   };
 
   const showStats = async () => {
-    dispatch({ type: SHOW_STATS_BEGIN });
+    dispatch({ type: STATS_SHOW_BEGIN });
     try {
       const { data } = await authFetch("jobs/stats");
       dispatch({
-        type: SHOW_STATS_SUCCESS,
+        type: STATS_SHOW_SUCCESS,
         payload: {
           stats: data.defaultStats,
           monthlyApplications: data.monthlyApplications,
         },
       });
     } catch (error) {
-      logoutUser()
+      userLogout();
     }
   };
 
-  const changePage = (page) => {
-    dispatch({type:CHANGE_PAGE,payload:{ page }})
-  }
+  const pageChange = (page) => {
+    dispatch({ type: PAGE_CHANGE, payload: { page } });
+  };
 
   return (
     <ContextApp.Provider
       value={{
         ...state,
         showAlert,
-        userRegistration,
+        userRegister,
         loginUser,
-        setupUser,
-        toggleSidebar,
-        logoutUser,
+        userSetup,
+        sideToggle,
+        userLogout,
         updateUser,
         handleChange,
-        clearValues,
-        createJob,
-        getJobs,
+        valuesClear,
+        createNewJob,
+        getAllJobs,
         setEditJob,
         editJob,
         deleteJob,
         showStats,
         clearSearch,
-        changePage,
+        pageChange,
       }}
     >
       {children}
